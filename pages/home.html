@@ -1,0 +1,154 @@
+<!-- ════════════════════════════════════════════
+     pages/home.html — Home page content
+     Injected into #page-home in index.html
+     Timtim by Aritri
+════════════════════════════════════════════ -->
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero banner" style="padding:0">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Timtim by Aritri · Candle Making Supplies</p>
+    <h1 class="hero-h1">Craft candles<br>that <em>illuminate</em><br>the soul</h1>
+    <p class="hero-sub">Premium quality waxes, fragrances, moulds &amp; tools for the passionate candle maker. Everything you need to pour your first — or finest — candle.</p>
+    <div class="hero-btns">
+      <button class="btn-dark" onclick="Router.scrollToSection('categories')">Shop Now</button>
+      <button class="btn-outline" onclick="Router.scrollToSection('kits')">Beginner Kits</button>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-tile tall c-amber"><span>🕯️</span><div class="hero-tag">Soy Wax Collection</div></div>
+    <div class="hero-tile c-rose"><span>🌹</span><div class="hero-tag">Floral Moulds</div></div>
+    <div class="hero-tile c-fragrance"><span>🌿</span><div class="hero-tag">Fragrance Oils</div></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-row" id="trust-row" aria-label="Our promises"></div>
+
+<!-- CATEGORIES -->
+<section class="section section-white" id="categories" aria-labelledby="cat-heading">
+  <div class="sec-head reveal">
+    <div>
+      <p class="sec-label">Explore</p>
+      <h2 class="sec-title" id="cat-heading">Shop by <em>Category</em></h2>
+    </div>
+    <button class="view-all-btn" onclick="Router.scrollToSection('raw-material')">View All →</button>
+  </div>
+  <div class="cat-grid" id="cat-grid"></div>
+</section>
+
+<!-- PRODUCTS — WAXES -->
+<section class="section section-cream" id="raw-material" aria-labelledby="wax-heading">
+  <div class="sec-head reveal">
+    <div>
+      <p class="sec-label">Best Sellers</p>
+      <h2 class="sec-title" id="wax-heading">Candle <em>Waxes</em></h2>
+    </div>
+    <button class="view-all-btn">View All →</button>
+  </div>
+  <div class="prod-grid" id="wax-grid"></div>
+</section>
+
+<!-- PROMO BANNERS -->
+<div class="promo-strip" id="moulds">
+  <div class="promo-half dark reveal">
+    <p class="promo-eyebrow">❤ Valentine's Special</p>
+    <h2>30% Off on Heart &amp; Love Moulds</h2>
+    <p>Create heartfelt gifts with our exclusive Valentine collection — teddy moulds, heart roses, and romantic sets crafted with love.</p>
+    <button class="btn-cream" onclick="Router.scrollToSection('raw-material')">Shop the Collection</button>
+  </div>
+  <div class="promo-half charcoal reveal" id="kits">
+    <p class="promo-eyebrow">★ Just Starting Out?</p>
+    <h2>Beginner Kits — Everything Included</h2>
+    <p>Hand-curated starter kits with wax, wicks, fragrances, tools &amp; step-by-step guidance. Begin your candle journey today.</p>
+    <button class="btn-sage" onclick="CartPage.addFromCard(13, this)">Add Kit to Cart</button>
+  </div>
+</div>
+
+<!-- FRAGRANCES -->
+<section class="section section-gray" id="fragrances" aria-labelledby="frag-heading">
+  <div class="sec-head reveal">
+    <div>
+      <p class="sec-label">Scents</p>
+      <h2 class="sec-title" id="frag-heading">Fragrance <em>Oils</em></h2>
+    </div>
+    <button class="view-all-btn">View All →</button>
+  </div>
+  <div class="frag-grid" id="frag-grid"></div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter" id="contact">
+  <p class="nl-label">Stay in the loop</p>
+  <h2>Offers, launches &amp; candle <em>inspiration</em></h2>
+  <p>Subscribe and never miss a new mould drop, sale, or seasonal collection.</p>
+  <form class="nl-form" id="nl-form" novalidate>
+    <label for="nl-email" class="sr-only">Email address</label>
+    <input type="email" id="nl-email" name="email"
+           placeholder="Enter your email address"
+           autocomplete="email" required/>
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <button class="foot-logo" onclick="Router.go('home')" aria-label="Home">
+        Timtim <span>by</span> Aritri
+      </button>
+      <p>India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers &amp; beginner kits. Dispatch within 24 hours. Pan India delivery.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/candle_rawmaterial"
+           target="_blank" rel="noopener noreferrer"
+           class="soc" aria-label="Instagram">📷</a>
+        <a href="https://wa.me/919899131167"
+           target="_blank" rel="noopener noreferrer"
+           class="soc" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Shop</h5>
+      <ul>
+        <li><button onclick="Router.scrollToSection('raw-material')">Candle Waxes</button></li>
+        <li><button onclick="Router.scrollToSection('moulds')">Silicon Moulds</button></li>
+        <li><button onclick="Router.scrollToSection('fragrances')">Fragrances</button></li>
+        <li><button onclick="Router.scrollToSection('raw-material')">Containers</button></li>
+        <li><button onclick="Router.scrollToSection('kits')">Beginner Kits</button></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Help</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer">📞 WhatsApp Us</a></li>
+        <li><a href="mailto:support@timtimbyaritri.com">📧 Email Support</a></li>
+        <li><a href="https://instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer">📷 @candle_rawmaterial</a></li>
+      </ul>
+      <br>
+      <h5>Dispatch</h5>
+      <ul>
+        <li><a href="#">⏱ 24 Working Hours</a></li>
+        <li><a href="#">📦 Pan India Delivery</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© <span id="foot-year"></span> Timtim by Aritri. All rights reserved.</p>
+    <div class="foot-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Refund Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>

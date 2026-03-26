@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ── PRIMARY SEO META ──────────────────── -->
+  <title>Timtim by Aritri — Premium Candle Making Supplies India</title>
+  <meta name="description" content="India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers & beginner kits. 24hr dispatch. Pan India delivery."/>
+  <meta name="keywords"    content="candle making supplies India, soy wax, beeswax, fragrance oils, silicon candle moulds, candle wicks, beginner candle kit, raw materials candle"/>
+  <meta name="author"      content="Timtim by Aritri"/>
+  <meta name="robots"      content="index, follow"/>
+  <link rel="canonical"    href="https://timtimbyaritri.com/"/>
+
+  <!-- ── OPEN GRAPH ────────────────────────── -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://timtimbyaritri.com/"/>
+  <meta property="og:title"       content="Timtim by Aritri — Premium Candle Making Supplies"/>
+  <meta property="og:description" content="Premium quality waxes, fragrances, moulds & tools for the passionate candle maker."/>
+  <meta property="og:image"       content="https://timtimbyaritri.com/og-image.jpg"/>
+  <meta property="og:locale"      content="en_IN"/>
+
+  <!-- ── TWITTER CARD ──────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Timtim by Aritri — Candle Making Supplies"/>
+  <meta name="twitter:description" content="Premium quality waxes, fragrances, moulds & tools for the passionate candle maker."/>
+
+  <!-- ── STRUCTURED DATA ───────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Timtim by Aritri",
+    "url": "https://timtimbyaritri.com",
+    "description": "Premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers and beginner kits.",
+    "telephone": "+919899131167",
+    "email": "support@timtimbyaritri.com",
+    "sameAs": ["https://www.instagram.com/candle_rawmaterial"],
+    "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "priceRange": "₹₹"
+  }
+  </script>
+
+  <!-- ── FONTS ─────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+
+  <!-- ── FAVICON ───────────────────────────── -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>"/>
+
+  <!-- ══════════════════════════════════════
+       CSS — loaded in dependency order
+  ═══════════════════════════════════════ -->
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/product.css"/>
+  <link rel="stylesheet" href="css/cart.css"/>
+  <link rel="stylesheet" href="css/checkout.css"/>
+</head>
+<body>
+
+<!-- ── SKIP LINK ─────────────────────────────── -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ── ANNOUNCEMENT BAR ──────────────────────── -->
+<div class="announcement" role="status" aria-live="polite">
+  ✦ Free shipping on orders above ₹999 &nbsp;·&nbsp; 24hr dispatch &nbsp;·&nbsp; Pan India delivery ✦
+</div>
+
+<!-- ══════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+
+    <button class="nav-logo" id="nav-logo-btn" aria-label="Timtim by Aritri — Go to homepage">
+      Timtim <span>by</span> Aritri
+    </button>
+
+    <ul class="nav-links" aria-label="Site sections">
+      <li><a onclick="Router.scrollToSection('categories')" role="button" tabindex="0">Shop</a></li>
+      <li><a onclick="Router.scrollToSection('raw-material')" role="button" tabindex="0">Waxes</a></li>
+      <li><a onclick="Router.scrollToSection('fragrances')" role="button" tabindex="0">Fragrances</a></li>
+      <li><a onclick="Router.scrollToSection('moulds')" role="button" tabindex="0">Moulds</a></li>
+      <li><a onclick="Router.scrollToSection('contact')" role="button" tabindex="0">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Wishlist -->
+      <button class="nav-icon-btn" id="wishlist-nav-btn" aria-label="Wishlist">
+        ♡
+        <span class="nav-badge" id="wish-badge" aria-hidden="true">0</span>
+      </button>
+
+      <!-- Cart icon (mobile) -->
+      <button class="nav-icon-btn" onclick="Router.go('cart')" aria-label="Open cart">
+        🛒
+        <span class="nav-badge" id="cart-badge" aria-hidden="true">0</span>
+      </button>
+
+      <!-- Cart button (desktop) -->
+      <button class="nav-cart-btn" id="nav-cart-btn" aria-label="Open cart">
+        Cart (<span id="cart-count-nav">0</span>)
+      </button>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger-btn"
+        aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ────────────────────────────── -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation menu">
+  <button class="mobile-nav-link" onclick="Router.scrollToSection('categories');UI.closeMobileNav()">Shop All</button>
+  <button class="mobile-nav-link" onclick="Router.scrollToSection('raw-material');UI.closeMobileNav()">Candle Waxes</button>
+  <button class="mobile-nav-link" onclick="Router.scrollToSection('fragrances');UI.closeMobileNav()">Fragrances</button>
+  <button class="mobile-nav-link" onclick="Router.scrollToSection('moulds');UI.closeMobileNav()">Silicon Moulds</button>
+  <button class="mobile-nav-link" onclick="Router.scrollToSection('contact');UI.closeMobileNav()">Contact</button>
+  <button class="mobile-nav-link" onclick="Router.go('cart');UI.closeMobileNav()">🛒 Cart (<span id="mobile-cart-count">0</span>)</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGES  (all pages live in DOM; only one
+             has class="active" at a time)
+═══════════════════════════════════════════════ -->
+<main id="main-content">
+
+  <!-- ── HOME ──────────────────────────────── -->
+  <div id="page-home" class="page" aria-label="Home page">
+    <!-- Populated by pages/home.html (inlined below) -->
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero banner" style="padding:0">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Timtim by Aritri · Candle Making Supplies</p>
+        <h1 class="hero-h1">Craft candles<br>that <em>illuminate</em><br>the soul</h1>
+        <p class="hero-sub">Premium quality waxes, fragrances, moulds &amp; tools for the passionate candle maker. Everything you need to pour your first — or finest — candle.</p>
+        <div class="hero-btns">
+          <button class="btn-dark" onclick="Router.scrollToSection('categories')">Shop Now</button>
+          <button class="btn-outline" onclick="Router.scrollToSection('kits')">Beginner Kits</button>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-tile tall c-amber"><span>🕯️</span><div class="hero-tag">Soy Wax Collection</div></div>
+        <div class="hero-tile c-rose"><span>🌹</span><div class="hero-tag">Floral Moulds</div></div>
+        <div class="hero-tile c-fragrance"><span>🌿</span><div class="hero-tag">Fragrance Oils</div></div>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-row" id="trust-row" aria-label="Our promises"></div>
+
+    <!-- CATEGORIES -->
+    <section class="section section-white" id="categories" aria-labelledby="cat-heading">
+      <div class="sec-head reveal">
+        <div><p class="sec-label">Explore</p><h2 class="sec-title" id="cat-heading">Shop by <em>Category</em></h2></div>
+        <button class="view-all-btn" onclick="Router.scrollToSection('raw-material')">View All →</button>
+      </div>
+      <div class="cat-grid" id="cat-grid"></div>
+    </section>
+
+    <!-- PRODUCTS — WAXES -->
+    <section class="section section-cream" id="raw-material" aria-labelledby="wax-heading">
+      <div class="sec-head reveal">
+        <div><p class="sec-label">Best Sellers</p><h2 class="sec-title" id="wax-heading">Candle <em>Waxes</em></h2></div>
+        <button class="view-all-btn">View All →</button>
+      </div>
+      <div class="prod-grid" id="wax-grid"></div>
+    </section>
+
+    <!-- PROMO BANNERS -->
+    <div class="promo-strip" id="moulds">
+      <div class="promo-half dark reveal">
+        <p class="promo-eyebrow">❤ Valentine's Special</p>
+        <h2>30% Off on Heart &amp; Love Moulds</h2>
+        <p>Create heartfelt gifts with our exclusive Valentine collection — teddy moulds, heart roses, and romantic sets crafted with love.</p>
+        <button class="btn-cream" onclick="Router.scrollToSection('raw-material')">Shop the Collection</button>
+      </div>
+      <div class="promo-half charcoal reveal" id="kits">
+        <p class="promo-eyebrow">★ Just Starting Out?</p>
+        <h2>Beginner Kits — Everything Included</h2>
+        <p>Hand-curated starter kits with wax, wicks, fragrances, tools &amp; step-by-step guidance. Begin your candle journey today.</p>
+        <button class="btn-sage" onclick="CartPage.addFromCard(13, this)">Add Kit to Cart</button>
+      </div>
+    </div>
+
+    <!-- FRAGRANCES -->
+    <section class="section section-gray" id="fragrances" aria-labelledby="frag-heading">
+      <div class="sec-head reveal">
+        <div><p class="sec-label">Scents</p><h2 class="sec-title" id="frag-heading">Fragrance <em>Oils</em></h2></div>
+        <button class="view-all-btn">View All →</button>
+      </div>
+      <div class="frag-grid" id="frag-grid"></div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter" id="contact">
+      <p class="nl-label">Stay in the loop</p>
+      <h2>Offers, launches &amp; candle <em>inspiration</em></h2>
+      <p>Subscribe and never miss a new mould drop, sale, or seasonal collection.</p>
+      <form class="nl-form" id="nl-form" novalidate>
+        <label for="nl-email" class="sr-only">Email address</label>
+        <input type="email" id="nl-email" name="email" placeholder="Enter your email address" autocomplete="email" required/>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <button class="foot-logo" onclick="Router.go('home')" aria-label="Home">Timtim <span>by</span> Aritri</button>
+          <p>India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers &amp; beginner kits. Dispatch within 24 hours. Pan India delivery.</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Instagram">📷</a>
+            <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="soc" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h5>Shop</h5>
+          <ul>
+            <li><button onclick="Router.scrollToSection('raw-material')">Candle Waxes</button></li>
+            <li><button onclick="Router.scrollToSection('moulds')">Silicon Moulds</button></li>
+            <li><button onclick="Router.scrollToSection('fragrances')">Fragrances</button></li>
+            <li><button onclick="Router.scrollToSection('raw-material')">Containers</button></li>
+            <li><button onclick="Router.scrollToSection('kits')">Beginner Kits</button></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Help</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer">📞 WhatsApp Us</a></li>
+            <li><a href="mailto:support@timtimbyaritri.com">📧 Email Support</a></li>
+            <li><a href="https://instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer">📷 @candle_rawmaterial</a></li>
+          </ul>
+          <br>
+          <h5>Dispatch</h5>
+          <ul>
+            <li><a href="#">⏱ 24 Working Hours</a></li>
+            <li><a href="#">📦 Pan India Delivery</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© <span id="foot-year"></span> Timtim by Aritri. All rights reserved.</p>
+        <div class="foot-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Refund Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </div><!-- /#page-home -->
+
+  <!-- ── PRODUCT DETAIL ─────────────────────── -->
+  <div id="page-product" class="page" aria-label="Product detail">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <span onclick="Router.go('home')">Home</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span id="pd-cat-crumb" onclick="Router.go('home')">Category</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span id="pd-name-crumb" class="current" aria-current="page">Product</span>
+    </nav>
+
+    <div class="pd-layout">
+      <div class="pd-gallery">
+        <div class="pd-main-img" id="pd-main-img" aria-label="Product image"></div>
+        <div class="pd-thumbs" id="pd-thumbs" role="list"></div>
+      </div>
+      <div class="pd-info">
+        <div class="pd-badge-row" id="pd-badges"></div>
+        <h1 class="pd-name"    id="pd-name">Loading…</h1>
+        <p  class="pd-code"    id="pd-code"></p>
+        <div class="pd-prices">
+          <span class="pd-price"    id="pd-price">₹0</span>
+          <span class="pd-original" id="pd-original" style="display:none"></span>
+          <span class="pd-save"     id="pd-save"     style="display:none"></span>
+        </div>
+        <div class="pd-divider"></div>
+        <p class="pd-desc" id="pd-desc"></p>
+        <div class="pd-specs" id="pd-specs"></div>
+        <div class="pd-divider"></div>
+        <div class="pd-qty-row">
+          <span class="qty-label" id="qty-label">Qty</span>
+          <div class="qty-ctrl" role="group" aria-labelledby="qty-label">
+            <button class="qty-btn" onclick="ProductPage.changeQty(-1)" aria-label="Decrease">−</button>
+            <input  class="qty-val" id="pd-qty" value="1" min="1" max="50" readonly aria-label="Quantity"/>
+            <button class="qty-btn" onclick="ProductPage.changeQty(1)"  aria-label="Increase">+</button>
+          </div>
+        </div>
+        <div class="pd-actions">
+          <button class="pd-atc-btn"  id="pd-atc-btn"  onclick="ProductPage.addToCart()">Add to Cart</button>
+          <button class="pd-wish-btn" id="pd-wish-btn" onclick="ProductPage.toggleWish()" aria-label="Wishlist">♡</button>
+        </div>
+        <div class="pd-trust-row">
+          <div class="pd-trust-item"><span class="ico">🚚</span><span>24hr dispatch</span></div>
+          <div class="pd-trust-item"><span class="ico">📦</span><span>Secure packaging</span></div>
+          <div class="pd-trust-item"><span class="ico">✦</span><span>Lab tested</span></div>
+          <div class="pd-trust-item"><span class="ico">↩</span><span>Easy returns</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pd-tabs">
+      <div class="pd-tab-nav" role="tablist">
+        <button class="pd-tab-btn active" role="tab" aria-selected="true" aria-controls="tab-desc"     onclick="ProductPage.switchTab(this,'tab-desc')">Description</button>
+        <button class="pd-tab-btn"        role="tab" aria-selected="false" aria-controls="tab-usage"   onclick="ProductPage.switchTab(this,'tab-usage')">Usage &amp; Tips</button>
+        <button class="pd-tab-btn"        role="tab" aria-selected="false" aria-controls="tab-shipping" onclick="ProductPage.switchTab(this,'tab-shipping')">Shipping &amp; Returns</button>
+      </div>
+      <div id="tab-desc"     class="pd-tab-panel active" role="tabpanel" tabindex="0"><div id="tab-desc-content"></div></div>
+      <div id="tab-usage"    class="pd-tab-panel"        role="tabpanel" tabindex="0"><div id="tab-usage-content"></div></div>
+      <div id="tab-shipping" class="pd-tab-panel"        role="tabpanel" tabindex="0">
+        <h4>Shipping Policy</h4>
+        <p>All orders are dispatched within 24 working hours. We ship Pan India via reputed courier partners.</p>
+        <ul>
+          <li>Standard delivery: 3–7 business days</li>
+          <li>Express delivery: 1–2 business days (select pin codes)</li>
+          <li>Free shipping on orders above ₹999</li>
+          <li>Fragile items are triple-wrapped for safe transit</li>
+        </ul>
+        <h4>Returns &amp; Refunds</h4>
+        <p>We accept returns within 7 days of delivery for unopened items in original packaging. An unboxing video is required for damage claims.</p>
+        <ul>
+          <li>Damaged goods: full replacement or refund within 48 hours</li>
+          <li>Wrong item: exchange at no cost</li>
+          <li>Opened fragrance oils or waxes cannot be returned</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="related-section">
+      <div class="sec-head">
+        <div><p class="sec-label">You May Also Like</p><h2 class="sec-title">Related <em>Products</em></h2></div>
+      </div>
+      <div class="prod-grid" id="related-grid"></div>
+    </div>
+
+  </div><!-- /#page-product -->
+
+  <!-- ── CART ───────────────────────────────── -->
+  <div id="page-cart" class="page" aria-label="Shopping cart">
+    <div class="page-header">
+      <h1>Your Cart</h1>
+      <p id="cart-subtitle">Loading…</p>
+    </div>
+    <div class="cart-layout">
+      <div id="cart-items-col" aria-live="polite" aria-label="Cart items"></div>
+      <aside class="order-summary" aria-label="Order summary">
+        <h2 class="os-title">Order Summary</h2>
+        <div class="os-row"><span>Subtotal</span><span id="os-subtotal">₹0</span></div>
+        <div class="os-row"><span>Shipping</span><span id="os-shipping">—</span></div>
+        <div class="os-row"><span>Discount</span><span id="os-discount">₹0</span></div>
+        <div class="os-row total"><span>Total</span><span id="os-total">₹0</span></div>
+        <div class="os-divider"></div>
+        <div class="coupon-row">
+          <label for="coupon-input" class="sr-only">Promo code</label>
+          <input class="coupon-input" id="coupon-input" type="text" placeholder="Promo code" autocomplete="off" spellcheck="false"/>
+          <button class="coupon-apply-btn" onclick="CartPage.applyCoupon()">Apply</button>
+        </div>
+        <p style="font-size:11px;color:var(--warm-gray);margin-bottom:16px">
+          Try: <code style="font-size:11px;background:var(--light-gray);padding:2px 6px">TIMTIM10</code>
+        </p>
+        <button class="checkout-cta-btn" id="checkout-cta-btn" onclick="Router.go('checkout')" disabled>Proceed to Checkout →</button>
+        <button class="continue-btn" onclick="Router.go('home')">← Continue Shopping</button>
+        <p id="os-shipping-note" style="font-size:11px;text-align:center;margin-top:14px;color:var(--warm-gray)"></p>
+        <div class="os-trust">
+          <span>🔒 Secure &amp; encrypted checkout</span>
+          <span>📦 Free shipping on orders ≥ ₹999</span>
+          <span>↩ Easy 7-day returns</span>
+        </div>
+      </aside>
+    </div>
+  </div><!-- /#page-cart -->
+
+  <!-- ── CHECKOUT ───────────────────────────── -->
+  <div id="page-checkout" class="page" aria-label="Checkout">
+    <div class="page-header">
+      <h1>Checkout</h1>
+      <p>🔒 Secure payment · All information is encrypted</p>
+    </div>
+    <div class="checkout-layout">
+      <div class="checkout-form">
+        <!-- Contact -->
+        <div class="cf-section">
+          <h3>Contact Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cf-first">First Name *</label>
+              <input class="form-input" id="cf-first" type="text" placeholder="Aritri" autocomplete="given-name"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-last">Last Name *</label>
+              <input class="form-input" id="cf-last" type="text" placeholder="Sharma" autocomplete="family-name"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-email">Email Address *</label>
+            <input class="form-input" id="cf-email" type="email" placeholder="you@email.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-phone">Phone Number *</label>
+            <input class="form-input" id="cf-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel"/>
+          </div>
+        </div>
+        <!-- Shipping -->
+        <div class="cf-section">
+          <h3>Shipping Address</h3>
+          <div class="form-group">
+            <label class="form-label" for="cf-addr1">Address Line 1 *</label>
+            <input class="form-input" id="cf-addr1" type="text" placeholder="House / Flat / Building No." autocomplete="address-line1"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-addr2">Address Line 2</label>
+            <input class="form-input" id="cf-addr2" type="text" placeholder="Street / Area / Locality" autocomplete="address-line2"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cf-city">City *</label>
+              <input class="form-input" id="cf-city" type="text" placeholder="Mumbai" autocomplete="address-level2"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-pin">Pincode *</label>
+              <input class="form-input" id="cf-pin" type="text" placeholder="400001" autocomplete="postal-code" maxlength="6"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-state">State *</label>
+            <select class="form-input form-select" id="cf-state" autocomplete="address-level1">
+              <option value="">Select State</option>
+              <option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option>
+              <option>Delhi</option><option>Goa</option><option>Gujarat</option>
+              <option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option>
+              <option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option>
+              <option>Maharashtra</option><option>Odisha</option><option>Punjab</option>
+              <option>Rajasthan</option><option>Tamil Nadu</option><option>Telangana</option>
+              <option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option>
+            </select>
+          </div>
+        </div>
+        <!-- Payment -->
+        <div class="cf-section">
+          <h3>Payment Method</h3>
+          <div class="payment-methods" role="radiogroup" aria-label="Payment method">
+            <label class="pay-option selected" id="pay-opt-card" onclick="CheckoutPage.selectPayment('card')">
+              <input type="radio" name="pay" value="card" checked aria-label="Credit or debit card"/>
+              <div class="pay-label-group"><p class="pay-title">Credit / Debit Card</p><p class="pay-sub">Visa, Mastercard, RuPay</p></div>
+              <div class="pay-icons"><span class="pay-icon">VISA</span><span class="pay-icon">MC</span></div>
+            </label>
+            <div class="pay-extra-fields show" id="card-fields">
+              <div class="form-group">
+                <label class="form-label" for="cf-card-num">Card Number</label>
+                <input class="form-input" id="cf-card-num" type="text" placeholder="4242 4242 4242 4242" maxlength="19" autocomplete="cc-number" inputmode="numeric"/>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="cf-expiry">Expiry (MM / YY)</label>
+                  <input class="form-input" id="cf-expiry" type="text" placeholder="08 / 27" maxlength="7" autocomplete="cc-exp"/>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cf-cvv">CVV</label>
+                  <input class="form-input" id="cf-cvv" type="password" placeholder="•••" maxlength="4" autocomplete="cc-csc"/>
+                </div>
+              </div>
+            </div>
+            <label class="pay-option" id="pay-opt-upi" onclick="CheckoutPage.selectPayment('upi')">
+              <input type="radio" name="pay" value="upi" aria-label="UPI"/>
+              <div class="pay-label-group"><p class="pay-title">UPI</p><p class="pay-sub">GPay, PhonePe, Paytm, BHIM</p></div>
+              <div class="pay-icons"><span class="pay-icon">UPI</span></div>
+            </label>
+            <div class="pay-extra-fields" id="upi-field">
+              <div class="form-group">
+                <label class="form-label" for="cf-upi">UPI ID</label>
+                <input class="form-input" id="cf-upi" type="text" placeholder="yourname@upi" autocomplete="off"/>
+              </div>
+            </div>
+            <label class="pay-option" id="pay-opt-cod" onclick="CheckoutPage.selectPayment('cod')">
+              <input type="radio" name="pay" value="cod" aria-label="Cash on delivery"/>
+              <div class="pay-label-group"><p class="pay-title">Cash on Delivery</p><p class="pay-sub">Pay when your order arrives</p></div>
+              <div class="pay-icons"><span class="pay-icon">COD</span></div>
+            </label>
+            <label class="pay-option" id="pay-opt-wa" onclick="CheckoutPage.selectPayment('wa')">
+              <input type="radio" name="pay" value="wa" aria-label="Order via WhatsApp"/>
+              <div class="pay-label-group"><p class="pay-title">Order via WhatsApp</p><p class="pay-sub">Send order details directly to us</p></div>
+              <div class="pay-icons"><span class="pay-icon wa">WA</span></div>
+            </label>
+          </div>
+        </div>
+        <button class="place-order-btn" onclick="CheckoutPage.placeOrder()">Place Order →</button>
+      </div>
+      <!-- Summary sidebar -->
+      <aside class="checkout-summary" aria-label="Order summary">
+        <div class="cs-box">
+          <p class="cs-title">Order Summary</p>
+          <div id="cs-items" role="list"></div>
+          <div class="cs-totals">
+            <div class="cs-row"><span>Subtotal</span><span id="cs-sub">₹0</span></div>
+            <div class="cs-row"><span>Shipping</span><span id="cs-ship">—</span></div>
+            <div class="cs-row grand"><span>Total</span><span id="cs-total">₹0</span></div>
+          </div>
+          <p class="cs-shipping-note" id="cs-shipping-note"></p>
+        </div>
+        <div class="cs-security-note">
+          🔒 <strong>Secure Checkout.</strong> Your payment information is encrypted and never stored on our servers.
+        </div>
+      </aside>
+    </div>
+  </div><!-- /#page-checkout -->
+
+  <!-- ── SUCCESS ────────────────────────────── -->
+  <div id="page-success" class="page" aria-label="Order confirmed">
+    <div class="success-page">
+      <div class="success-box">
+        <div class="success-icon" aria-hidden="true">🎉</div>
+        <h2>Order Placed!</h2>
+        <p>Thank you for shopping with Timtim by Aritri. Your order has been received and will be dispatched within 24 working hours.</p>
+        <div class="order-num-box">
+          <span>Order Number</span>
+          <strong id="order-number">#TT-000000</strong>
+        </div>
+        <p class="success-note">A confirmation has been sent to your email. You'll receive a WhatsApp message with tracking details once your order ships.</p>
+        <div class="success-actions">
+          <button class="btn-dark" onclick="Router.go('home')">Continue Shopping</button>
+          <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="btn-outline" style="text-decoration:none">Track via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div><!-- /#page-success -->
+
+</main>
+
+<!-- ── WHATSAPP FLOAT ─────────────────────────── -->
+<a href="https://wa.me/919899131167"
+   target="_blank" rel="noopener noreferrer"
+   class="wa-float" aria-label="Chat with us on WhatsApp"
+   title="Chat on WhatsApp">💬</a>
+
+<!-- ── TOAST ──────────────────────────────────── -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT — loaded in dependency order:
+     data → state → router → ui → pages → app
+═══════════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/router.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/home.js"></script>
+<script src="js/product.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

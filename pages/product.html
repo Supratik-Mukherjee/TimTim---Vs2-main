@@ -1,0 +1,141 @@
+<!-- ════════════════════════════════════════════
+     pages/product.html — Product detail page
+     Timtim by Aritri
+════════════════════════════════════════════ -->
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <span onclick="Router.go('home')">Home</span>
+  <span class="sep" aria-hidden="true">/</span>
+  <span id="pd-cat-crumb" onclick="Router.go('home')">Category</span>
+  <span class="sep" aria-hidden="true">/</span>
+  <span id="pd-name-crumb" class="current" aria-current="page">Product</span>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="pd-layout">
+
+  <!-- LEFT: Gallery -->
+  <div class="pd-gallery">
+    <div class="pd-main-img" id="pd-main-img" aria-label="Product image"></div>
+    <div class="pd-thumbs" id="pd-thumbs" role="list" aria-label="Product image thumbnails"></div>
+  </div>
+
+  <!-- RIGHT: Info -->
+  <div class="pd-info">
+
+    <div class="pd-badge-row" id="pd-badges" aria-label="Product labels"></div>
+
+    <h1 class="pd-name" id="pd-name">Loading…</h1>
+    <p  class="pd-code" id="pd-code"></p>
+
+    <div class="pd-prices" aria-label="Price">
+      <span class="pd-price"    id="pd-price">₹0</span>
+      <span class="pd-original" id="pd-original" style="display:none"></span>
+      <span class="pd-save"     id="pd-save"     style="display:none"></span>
+    </div>
+
+    <div class="pd-divider"></div>
+
+    <p class="pd-desc" id="pd-desc"></p>
+
+    <div class="pd-specs" id="pd-specs" aria-label="Product specifications"></div>
+
+    <div class="pd-divider"></div>
+
+    <!-- Quantity -->
+    <div class="pd-qty-row">
+      <span class="qty-label" id="qty-label">Qty</span>
+      <div class="qty-ctrl" role="group" aria-labelledby="qty-label">
+        <button class="qty-btn"
+          onclick="ProductPage.changeQty(-1)"
+          aria-label="Decrease quantity">−</button>
+        <input class="qty-val" id="pd-qty"
+          value="1" min="1" max="50"
+          readonly aria-label="Quantity"/>
+        <button class="qty-btn"
+          onclick="ProductPage.changeQty(1)"
+          aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="pd-actions">
+      <button class="pd-atc-btn" id="pd-atc-btn"
+        onclick="ProductPage.addToCart()"
+        aria-label="Add to cart">
+        Add to Cart
+      </button>
+      <button class="pd-wish-btn" id="pd-wish-btn"
+        onclick="ProductPage.toggleWish()"
+        aria-label="Add to wishlist">♡</button>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="pd-trust-row" aria-label="Guarantees">
+      <div class="pd-trust-item"><span class="ico">🚚</span><span>24hr dispatch</span></div>
+      <div class="pd-trust-item"><span class="ico">📦</span><span>Secure packaging</span></div>
+      <div class="pd-trust-item"><span class="ico">✦</span><span>Lab tested</span></div>
+      <div class="pd-trust-item"><span class="ico">↩</span><span>Easy returns</span></div>
+    </div>
+
+  </div><!-- /pd-info -->
+</div><!-- /pd-layout -->
+
+<!-- TABS -->
+<div class="pd-tabs">
+  <div class="pd-tab-nav" role="tablist" aria-label="Product information tabs">
+    <button class="pd-tab-btn active"
+      role="tab" aria-selected="true" aria-controls="tab-desc"
+      onclick="ProductPage.switchTab(this,'tab-desc')">
+      Description
+    </button>
+    <button class="pd-tab-btn"
+      role="tab" aria-selected="false" aria-controls="tab-usage"
+      onclick="ProductPage.switchTab(this,'tab-usage')">
+      Usage &amp; Tips
+    </button>
+    <button class="pd-tab-btn"
+      role="tab" aria-selected="false" aria-controls="tab-shipping"
+      onclick="ProductPage.switchTab(this,'tab-shipping')">
+      Shipping &amp; Returns
+    </button>
+  </div>
+
+  <div id="tab-desc" class="pd-tab-panel active" role="tabpanel" tabindex="0">
+    <div id="tab-desc-content"></div>
+  </div>
+
+  <div id="tab-usage" class="pd-tab-panel" role="tabpanel" tabindex="0">
+    <div id="tab-usage-content"></div>
+  </div>
+
+  <div id="tab-shipping" class="pd-tab-panel" role="tabpanel" tabindex="0">
+    <h4>Shipping Policy</h4>
+    <p>All orders are dispatched within 24 working hours from our warehouse. We ship Pan India via reputed courier partners.</p>
+    <ul>
+      <li>Standard delivery: 3–7 business days</li>
+      <li>Express delivery: 1–2 business days (select pin codes)</li>
+      <li>Free shipping on orders above ₹999</li>
+      <li>Fragile items are triple-wrapped for safe transit</li>
+    </ul>
+    <h4>Returns &amp; Refunds</h4>
+    <p>We accept returns within 7 days of delivery for unopened, unused items in original packaging. Please record an unboxing video as it is required for all damage claims.</p>
+    <ul>
+      <li>Damaged goods: full replacement or refund within 48 hours</li>
+      <li>Wrong item: exchange at no cost</li>
+      <li>Opened fragrance oils or waxes cannot be returned</li>
+    </ul>
+  </div>
+</div><!-- /pd-tabs -->
+
+<!-- RELATED PRODUCTS -->
+<div class="related-section">
+  <div class="sec-head">
+    <div>
+      <p class="sec-label">You May Also Like</p>
+      <h2 class="sec-title">Related <em>Products</em></h2>
+    </div>
+  </div>
+  <div class="prod-grid" id="related-grid"></div>
+</div>

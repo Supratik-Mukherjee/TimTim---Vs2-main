@@ -1,0 +1,38 @@
+<!-- ════════════════════════════════════════════
+     pages/success.html — Order success page
+     Timtim by Aritri
+════════════════════════════════════════════ -->
+
+<div class="success-page" role="main" aria-label="Order confirmation">
+  <div class="success-box">
+
+    <div class="success-icon" aria-hidden="true">🎉</div>
+
+    <h2>Order Placed!</h2>
+
+    <p>Thank you for shopping with Timtim by Aritri. Your order has been received and will be dispatched within 24 working hours.</p>
+
+    <div class="order-num-box" aria-label="Your order number">
+      <span>Order Number</span>
+      <strong id="order-number">#TT-000000</strong>
+    </div>
+
+    <p class="success-note">
+      A confirmation has been sent to your email. You'll receive a WhatsApp message with tracking details once your order ships.
+    </p>
+
+    <div class="success-actions">
+      <button class="btn-dark" onclick="Router.go('home')">
+        Continue Shopping
+      </button>
+      <a href="https://wa.me/919899131167"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-outline"
+         style="text-decoration:none">
+        Track via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</div>
