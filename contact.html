@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us — Timtim by Aritri</title>
+  <meta name="description" content="Get in touch with Timtim by Aritri — WhatsApp, email, or Instagram."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/checkout.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .contact-info h2 em { font-style: italic; color: var(--amber); }
+    .contact-info p { color: var(--warm-gray); line-height: 1.8; margin-bottom: 32px; font-size: 0.95rem; }
+    .contact-channels { display: flex; flex-direction: column; gap: 16px; }
+    .channel-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--charcoal);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .channel-card:hover { border-color: var(--amber); transform: translateX(4px); }
+    .channel-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .channel-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 2px; }
+    .channel-value { font-size: 0.97rem; font-weight: 500; color: var(--charcoal); }
+    .contact-form-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px;
+    }
+    .contact-form-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+    .contact-form-box h3 em { font-style: italic; color: var(--amber); }
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: var(--amber); }
+    .faq-section { margin-top: 80px; }
+    .faq-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .faq-section h2 em { font-style: italic; color: var(--amber); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .faq-item {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px 28px;
+    }
+    .faq-q { font-weight: 600; color: var(--charcoal); margin-bottom: 10px; font-size: 0.95rem; }
+    .faq-a { color: var(--warm-gray); font-size: 0.88rem; line-height: 1.7; }
+    .hours-note {
+      text-align: center;
+      margin-top: 48px;
+      padding: 28px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 4px;
+    }
+    .hours-note p { margin: 0; font-size: 0.9rem; line-height: 1.8; color: rgba(249,244,236,0.8); }
+    .hours-note strong { color: var(--amber); }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .contact-form-box { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="announcement" role="status" aria-live="polite"></div>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner"></div>
+</nav>
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation menu"></div>
+
+<main id="main-content">
+
+  <div class="page-hero">
+    <p class="eyebrow">We're here to help</p>
+    <h1>Get in <em>touch</em></h1>
+    <p>Questions about an order, product recommendations, or just want to chat candles? We'd love to hear from you.</p>
+  </div>
+
+  <div class="content-wrap">
+    <div class="contact-layout">
+
+      <!-- LEFT: contact channels -->
+      <div class="contact-info">
+        <h2>Reach us <em>anytime</em></h2>
+        <p>We typically respond within a few hours on WhatsApp and within 24 hours on email. Monday to Saturday, 9am – 6pm IST.</p>
+        <div class="contact-channels">
+          <a class="channel-card" href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer">
+            <span class="channel-icon">💬</span>
+            <div>
+              <div class="channel-label">WhatsApp (fastest)</div>
+              <div class="channel-value">+91 98991 31167</div>
+            </div>
+          </a>
+          <a class="channel-card" href="mailto:support@timtimbyaritri.com">
+            <span class="channel-icon">📧</span>
+            <div>
+              <div class="channel-label">Email</div>
+              <div class="channel-value">support@timtimbyaritri.com</div>
+            </div>
+          </a>
+          <a class="channel-card" href="https://instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer">
+            <span class="channel-icon">📷</span>
+            <div>
+              <div class="channel-label">Instagram</div>
+              <div class="channel-value">@candle_rawmaterial</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="hours-note" style="margin-top:32px">
+          <p>⏱ <strong>Working Hours</strong><br>Monday – Saturday · 9:00 AM – 6:00 PM IST<br>Orders placed after hours dispatch the next working day.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: contact form -->
+      <div class="contact-form-box">
+        <h3>Send us a <em>message</em></h3>
+        <div class="form-group">
+          <label class="form-label" for="ct-name">Your Name *</label>
+          <input class="form-input" id="ct-name" type="text" placeholder="Aritri Sharma" autocomplete="name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ct-email">Email Address *</label>
+          <input class="form-input" id="ct-email" type="email" placeholder="you@email.com" autocomplete="email"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ct-subject">Subject</label>
+          <select class="form-input form-select" id="ct-subject">
+            <option value="">Select a topic</option>
+            <option>Order Status / Tracking</option>
+            <option>Product Recommendation</option>
+            <option>Return or Refund</option>
+            <option>Bulk / Wholesale Enquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ct-msg">Message *</label>
+          <textarea class="form-input" id="ct-msg" rows="5" placeholder="Tell us how we can help..." style="resize:vertical"></textarea>
+        </div>
+        <button class="submit-btn" id="ct-submit-btn" onclick="submitContactForm()">Send Message →</button>
+      </div>
+
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Frequently <em>Asked</em></h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">How long does delivery take?</div>
+          <div class="faq-a">Standard delivery takes 3–7 business days Pan India. Express delivery (1–2 days) is available for select pin codes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you offer bulk/wholesale pricing?</div>
+          <div class="faq-a">Yes! Contact us on WhatsApp or email with your requirements and we'll send you our wholesale catalogue.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I return a product?</div>
+          <div class="faq-a">We accept returns within 7 days for unopened items. An unboxing video is required for damage claims. Opened fragrance oils and waxes cannot be returned.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Which wax is best for beginners?</div>
+          <div class="faq-a">We recommend Soy Wax 464 for beginners — it's forgiving, has great scent throw, and produces clean-burning candles. Check out our Beginner Kit too!</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-logo" href="index.html" aria-label="Home">Timtim <span>by</span> Aritri</a>
+        <p>India's trusted source for premium candle-making raw materials.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Instagram">📷</a>
+          <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="soc" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="index.html">Candle Waxes</a></li>
+          <li><a href="index.html">Silicon Moulds</a></li>
+          <li><a href="index.html">Fragrances</a></li>
+          <li><a href="index.html">Beginner Kits</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer">📞 WhatsApp</a></li>
+          <li><a href="mailto:support@timtimbyaritri.com">📧 Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="foot-year"></span> Timtim by Aritri. All rights reserved.</p>
+    </div>
+  </footer>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat on WhatsApp">💬</a>
+
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  document.getElementById('foot-year').textContent = new Date().getFullYear();
+
+  function submitContactForm() {
+    const name    = document.getElementById('ct-name').value.trim();
+    const email   = document.getElementById('ct-email').value.trim();
+    const msg     = document.getElementById('ct-msg').value.trim();
+    if (!name || !email || !msg) {
+      UI.toast('Please fill in all required fields.');
+      return;
+    }
+    const btn = document.getElementById('ct-submit-btn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#4CAF50';
+      document.getElementById('ct-name').value = '';
+      document.getElementById('ct-email').value = '';
+      document.getElementById('ct-msg').value = '';
+      UI.toast('Message sent! We\'ll get back to you soon.');
+    }, 1200);
+  }
+</script>
+</body>
+</html>

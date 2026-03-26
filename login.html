@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Timtim by Aritri</title>
+  <meta name="description" content="Sign in or create an account at Timtim by Aritri."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <style>
+    body { background: var(--cream); }
+
+    .auth-wrap {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .auth-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 48px 44px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 4px 40px rgba(28,26,24,0.06);
+    }
+
+    .auth-logo {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .auth-logo span { color: var(--amber); font-style: italic; }
+
+    .auth-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .auth-title em { font-style: italic; color: var(--amber); }
+
+    .auth-sub {
+      text-align: center;
+      color: var(--warm-gray);
+      font-size: 0.88rem;
+      margin-bottom: 32px;
+    }
+
+    /* Tabs */
+    .auth-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--warm-gray);
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .auth-tab.active {
+      color: var(--charcoal);
+      border-bottom-color: var(--amber);
+    }
+
+    /* Method selector */
+    .method-pills {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .method-pill {
+      flex: 1;
+      padding: 8px 4px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: none;
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .method-pill.active {
+      border-color: var(--amber);
+      background: rgba(196,136,58,0.06);
+      color: var(--charcoal);
+    }
+
+    /* Form */
+    .auth-form-group { margin-bottom: 18px; }
+    .auth-label {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 7px;
+    }
+    .auth-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+
+    /* Buttons */
+    .auth-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .auth-btn:hover { background: var(--amber); }
+    .auth-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .auth-btn.google-btn {
+      background: white;
+      color: var(--charcoal);
+      border: 1px solid var(--border);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .auth-btn.google-btn:hover { border-color: var(--amber); background: var(--cream); }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--warm-gray);
+      font-size: 0.78rem;
+    }
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* OTP row */
+    .otp-row { display: flex; gap: 10px; }
+    .otp-row .auth-input { flex: 1; }
+    .send-otp-btn {
+      padding: 12px 16px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: 3px;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: 600;
+    }
+    .send-otp-btn:hover { background: var(--amber); }
+    .send-otp-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Error / success messages */
+    .auth-msg {
+      padding: 12px 14px;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .auth-msg.error { background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; display: block; }
+    .auth-msg.success { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; display: block; }
+
+    /* Logged-in state */
+    .logged-in-box { text-align: center; }
+    .user-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--light-gray);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 16px;
+    }
+    .logged-in-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 400;
+      color: var(--charcoal); margin-bottom: 6px;
+    }
+    .logged-in-box p { color: var(--warm-gray); font-size: 0.88rem; margin-bottom: 24px; }
+    .logout-btn {
+      padding: 11px 28px;
+      border: 1px solid var(--border);
+      background: none;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover { border-color: #EF4444; color: #EF4444; }
+
+    /* hidden sections */
+    .auth-section { display: none; }
+    .auth-section.show { display: block; }
+
+    #recaptcha-container { margin: 16px 0; }
+
+    @media (max-width: 500px) {
+      .auth-card { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="announcement" role="status" aria-live="polite"></div>
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner"></div>
+</nav>
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation menu"></div>
+
+<main id="main-content">
+  <div class="auth-wrap">
+    <div class="auth-card">
+
+      <div class="auth-logo">🕯️ Timtim <span>by Aritri</span></div>
+
+      <!-- ── LOGGED IN STATE ── -->
+      <div id="logged-in-state" style="display:none">
+        <div class="logged-in-box">
+          <div class="user-avatar">👤</div>
+          <h3>Welcome back!</h3>
+          <p id="logged-in-email"></p>
+          <a href="index.html" class="auth-btn" style="display:inline-block;text-decoration:none;margin-bottom:12px;text-align:center">Continue Shopping →</a>
+          <br/>
+          <button class="logout-btn" onclick="Auth.signOut()">Sign Out</button>
+        </div>
+      </div>
+
+      <!-- ── AUTH FORM STATE ── -->
+      <div id="auth-form-state">
+        <h2 class="auth-title">Sign <em>in</em></h2>
+        <p class="auth-sub">Access your account to save your cart &amp; wishlist</p>
+
+        <div id="auth-msg" class="auth-msg"></div>
+
+        <!-- Sign in / Sign up tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-signin" onclick="Auth.switchMode('signin')">Sign In</button>
+          <button class="auth-tab" id="tab-signup" onclick="Auth.switchMode('signup')">Create Account</button>
+        </div>
+
+        <!-- Method pills -->
+        <div class="method-pills">
+          <button class="method-pill active" id="pill-email" onclick="Auth.switchMethod('email')">📧 Email</button>
+          <button class="method-pill" id="pill-google" onclick="Auth.googleSignIn()">🔵 Google</button>
+          <button class="method-pill" id="pill-phone" onclick="Auth.switchMethod('phone')">📱 Phone</button>
+        </div>
+
+        <!-- EMAIL FORM -->
+        <div id="email-section" class="auth-section show">
+          <div class="auth-form-group">
+            <label class="auth-label" for="auth-email">Email Address</label>
+            <input class="auth-input" id="auth-email" type="email" placeholder="you@email.com" autocomplete="email"/>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label" for="auth-password">Password</label>
+            <input class="auth-input" id="auth-password" type="password" placeholder="••••••••" autocomplete="current-password"/>
+          </div>
+          <div id="signup-name-group" class="auth-form-group" style="display:none">
+            <label class="auth-label" for="auth-name">Full Name</label>
+            <input class="auth-input" id="auth-name" type="text" placeholder="Aritri Sharma" autocomplete="name"/>
+          </div>
+          <button class="auth-btn" id="email-submit-btn" onclick="Auth.emailSubmit()">Sign In →</button>
+        </div>
+
+        <!-- PHONE FORM -->
+        <div id="phone-section" class="auth-section">
+          <div class="auth-form-group">
+            <label class="auth-label" for="auth-phone">Phone Number</label>
+            <div class="otp-row">
+              <input class="auth-input" id="auth-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel"/>
+              <button class="send-otp-btn" id="send-otp-btn" onclick="Auth.sendOTP()">Send OTP</button>
+            </div>
+          </div>
+          <div id="otp-group" class="auth-form-group" style="display:none">
+            <label class="auth-label" for="auth-otp">Enter OTP</label>
+            <input class="auth-input" id="auth-otp" type="text" placeholder="6-digit code" maxlength="6" inputmode="numeric"/>
+          </div>
+          <div id="recaptcha-container"></div>
+          <button class="auth-btn" id="phone-submit-btn" onclick="Auth.phoneSubmit()" style="display:none">Verify OTP →</button>
+        </div>
+
+      </div><!-- /#auth-form-state -->
+
+      <p style="text-align:center;font-size:0.78rem;color:var(--warm-gray);margin-top:24px">
+        By signing in you agree to our <a href="#" style="color:var(--amber)">Terms</a> &amp; <a href="#" style="color:var(--amber)">Privacy Policy</a>
+      </p>
+
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo" style="margin-top:0">
+  <div class="foot-bottom" style="border-top:1px solid var(--border)">
+    <p>© <span id="foot-year"></span> Timtim by Aritri. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    onAuthStateChanged,
+    signOut,
+    updateProfile
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  // ── 🔥 REPLACE WITH YOUR FIREBASE CONFIG ──────────────────────
+  const firebaseConfig = {
+    apiKey:            "YOUR_API_KEY",
+    authDomain:        "YOUR_PROJECT.firebaseapp.com",
+    projectId:         "YOUR_PROJECT_ID",
+    storageBucket:     "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId:             "YOUR_APP_ID"
+  };
+  // ──────────────────────────────────────────────────────────────
+
+  const app      = initializeApp(firebaseConfig);
+  const auth     = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  let confirmationResult = null;
+  let currentMode = 'signin'; // 'signin' | 'signup'
+  let currentMethod = 'email';
+
+  // ── Auth state listener
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      document.getElementById('auth-form-state').style.display = 'none';
+      document.getElementById('logged-in-state').style.display = 'block';
+      document.getElementById('logged-in-email').textContent =
+        user.displayName ? `${user.displayName} · ${user.email || user.phoneNumber}` : (user.email || user.phoneNumber);
+    } else {
+      document.getElementById('auth-form-state').style.display = 'block';
+      document.getElementById('logged-in-state').style.display = 'none';
+    }
+  });
+
+  function showMsg(msg, type = 'error') {
+    const el = document.getElementById('auth-msg');
+    el.textContent = msg;
+    el.className = `auth-msg ${type}`;
+  }
+  function clearMsg() {
+    const el = document.getElementById('auth-msg');
+    el.className = 'auth-msg';
+    el.textContent = '';
+  }
+
+  // ── Expose Auth object globally
+  window.Auth = {
+
+    switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
+      document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
+      document.getElementById('signup-name-group').style.display = mode === 'signup' ? 'block' : 'none';
+      document.getElementById('email-submit-btn').textContent = mode === 'signin' ? 'Sign In →' : 'Create Account →';
+      clearMsg();
+    },
+
+    switchMethod(method) {
+      currentMethod = method;
+      ['email','phone'].forEach(m => {
+        document.getElementById(`${m}-section`).classList.toggle('show', m === method);
+        document.getElementById(`pill-${m}`)?.classList.toggle('active', m === method);
+      });
+      document.getElementById('pill-google').classList.remove('active');
+      clearMsg();
+    },
+
+    async emailSubmit() {
+      const email    = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value;
+      const name     = document.getElementById('auth-name').value.trim();
+      const btn      = document.getElementById('email-submit-btn');
+      if (!email || !password) { showMsg('Please enter your email and password.'); return; }
+      btn.disabled = true;
+      btn.textContent = 'Please wait…';
+      clearMsg();
+      try {
+        if (currentMode === 'signin') {
+          await signInWithEmailAndPassword(auth, email, password);
+        } else {
+          const cred = await createUserWithEmailAndPassword(auth, email, password);
+          if (name) await updateProfile(cred.user, { displayName: name });
+        }
+        showMsg('Success! Redirecting…', 'success');
+        setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+      } catch(e) {
+        btn.disabled = false;
+        btn.textContent = currentMode === 'signin' ? 'Sign In →' : 'Create Account →';
+        const msgs = {
+          'auth/user-not-found':    'No account found with this email.',
+          'auth/wrong-password':    'Incorrect password. Please try again.',
+          'auth/email-already-in-use': 'An account with this email already exists.',
+          'auth/weak-password':     'Password must be at least 6 characters.',
+          'auth/invalid-email':     'Please enter a valid email address.',
+        };
+        showMsg(msgs[e.code] || 'Something went wrong. Please try again.');
+      }
+    },
+
+    async googleSignIn() {
+      clearMsg();
+      document.getElementById('pill-google').classList.add('active');
+      try {
+        await signInWithPopup(auth, googleProvider);
+        showMsg('Signed in with Google! Redirecting…', 'success');
+        setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+      } catch(e) {
+        document.getElementById('pill-google').classList.remove('active');
+        if (e.code !== 'auth/popup-closed-by-user') showMsg('Google sign-in failed. Please try again.');
+      }
+    },
+
+    async sendOTP() {
+      const phone = document.getElementById('auth-phone').value.trim();
+      if (!phone) { showMsg('Please enter your phone number.'); return; }
+      const btn = document.getElementById('send-otp-btn');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      clearMsg();
+      try {
+        if (!window.recaptchaVerifier) {
+          window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'normal' });
+        }
+        confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
+        document.getElementById('otp-group').style.display = 'block';
+        document.getElementById('phone-submit-btn').style.display = 'block';
+        btn.textContent = 'Resend OTP';
+        btn.disabled = false;
+        showMsg('OTP sent! Check your phone.', 'success');
+      } catch(e) {
+        btn.disabled = false; btn.textContent = 'Send OTP';
+        showMsg('Failed to send OTP. Check the number and try again.');
+      }
+    },
+
+    async phoneSubmit() {
+      const otp = document.getElementById('auth-otp').value.trim();
+      if (!otp || otp.length < 6) { showMsg('Please enter the 6-digit OTP.'); return; }
+      const btn = document.getElementById('phone-submit-btn');
+      btn.disabled = true; btn.textContent = 'Verifying…';
+      clearMsg();
+      try {
+        await confirmationResult.confirm(otp);
+        showMsg('Phone verified! Redirecting…', 'success');
+        setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+      } catch(e) {
+        btn.disabled = false; btn.textContent = 'Verify OTP →';
+        showMsg('Invalid OTP. Please try again.');
+      }
+    },
+
+    async signOut() {
+      await signOut(auth);
+    }
+  };
+</script>
+
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  document.getElementById('foot-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

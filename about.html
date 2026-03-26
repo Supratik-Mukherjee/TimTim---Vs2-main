@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Timtim by Aritri</title>
+  <meta name="description" content="The story behind Timtim by Aritri — India's trusted candle making supplies store."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <style>
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .about-grid.reverse { direction: rtl; }
+    .about-grid.reverse > * { direction: ltr; }
+    .about-visual {
+      background: var(--light-gray);
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+    .about-text .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+    .about-text h2 em { font-style: italic; color: var(--amber); }
+    .about-text p {
+      color: var(--warm-gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .value-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .value-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .value-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+    .value-card p { color: var(--warm-gray); font-size: 0.88rem; line-height: 1.7; }
+    .team-section {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .team-section .sec-label { color: var(--amber); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .team-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .team-section h2 em { font-style: italic; color: var(--amber); }
+    .team-section p { color: rgba(249,244,236,0.7); max-width: 580px; margin: 0 auto 40px; line-height: 1.8; }
+    .team-card {
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(196,136,58,0.3);
+      border-radius: 4px;
+      padding: 40px 48px;
+      max-width: 340px;
+    }
+    .team-avatar { font-size: 4rem; margin-bottom: 16px; }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .team-role { color: var(--amber); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 64px 0;
+    }
+    .stat-item {
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--warm-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid.reverse { direction: ltr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
+    }
+    @media (max-width: 600px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .team-section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="announcement" role="status" aria-live="polite"></div>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner"></div>
+</nav>
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation menu"></div>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Our Story</p>
+    <h1>Made with love,<br><em>poured with purpose</em></h1>
+    <p>Born from a passion for the art of candle making — we exist to help every maker craft their finest work.</p>
+  </div>
+
+  <!-- STORY SECTION -->
+  <div class="content-wrap">
+
+    <div class="about-grid">
+      <div class="about-visual">🕯️</div>
+      <div class="about-text">
+        <p class="label">How it began</p>
+        <h2>A candle maker's <em>dream</em> became a store</h2>
+        <p>Timtim by Aritri was born out of a simple frustration — finding high-quality candle making supplies in India was unnecessarily hard. Long lead times, inconsistent quality, and no guidance for beginners.</p>
+        <p>So Aritri did what any passionate maker would do — she sourced it herself, tested everything rigorously, and opened her doors to the candle-making community across India.</p>
+        <p>Today, Timtim by Aritri is trusted by hobbyists, small businesses, and professional candle studios from Mumbai to Meghalaya.</p>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Products</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10k+</div>
+        <div class="stat-label">Happy Makers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24hr</div>
+        <div class="stat-label">Dispatch</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Pan India</div>
+        <div class="stat-label">Delivery</div>
+      </div>
+    </div>
+
+    <div class="about-grid reverse">
+      <div class="about-visual">🌿</div>
+      <div class="about-text">
+        <p class="label">Our Promise</p>
+        <h2>Quality you can <em>smell, feel,</em> and trust</h2>
+        <p>Every product we stock is personally tested by our team. From the throw of a fragrance oil to the melt point of a wax — we only sell what we'd use ourselves.</p>
+        <p>We believe candle making should be joyful, not frustrating. That's why we include detailed usage guides, responsive support, and honest product descriptions — so you spend more time creating and less time guessing.</p>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🧪</div>
+        <h3>Lab Tested</h3>
+        <p>Every fragrance oil and wax is tested for performance, safety, and consistency before it reaches you.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📦</div>
+        <h3>Fast Dispatch</h3>
+        <p>All orders are dispatched within 24 working hours with secure, damage-proof packaging.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💬</div>
+        <h3>Real Support</h3>
+        <p>Our team is available on WhatsApp to help you choose the right products and troubleshoot any issues.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOUNDER SECTION -->
+  <div class="team-section">
+    <p class="sec-label">The Founder</p>
+    <h2>Meet <em>Aritri</em></h2>
+    <p>Candle maker, entrepreneur, and the heart behind every product in this store. Aritri started this journey to make premium supplies accessible to every Indian maker.</p>
+    <div class="team-card">
+      <div class="team-avatar">👩‍🎨</div>
+      <div class="team-name">Aritri</div>
+      <div class="team-role">Founder & Head Candle Maker</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-logo" href="index.html" aria-label="Home">Timtim <span>by</span> Aritri</a>
+        <p>India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers &amp; beginner kits.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Instagram">📷</a>
+          <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="soc" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="index.html">Candle Waxes</a></li>
+          <li><a href="index.html">Silicon Moulds</a></li>
+          <li><a href="index.html">Fragrances</a></li>
+          <li><a href="index.html">Beginner Kits</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer">📞 WhatsApp Us</a></li>
+          <li><a href="mailto:support@timtimbyaritri.com">📧 Email Support</a></li>
+          <li><a href="https://instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer">📷 @candle_rawmaterial</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="foot-year"></span> Timtim by Aritri. All rights reserved.</p>
+    </div>
+  </footer>
+
+</main>
+
+<a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">💬</a>
+
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  document.getElementById('foot-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
