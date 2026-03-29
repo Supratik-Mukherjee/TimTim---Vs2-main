@@ -4,7 +4,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- ── PRIMARY SEO META ──────────────────── -->
   <title>Timtim by Aritri — Premium Candle Making Supplies India</title>
   <meta name="description" content="India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers & beginner kits. 24hr dispatch. Pan India delivery."/>
   <meta name="keywords"    content="candle making supplies India, soy wax, beeswax, fragrance oils, silicon candle moulds, candle wicks, beginner candle kit, raw materials candle"/>
@@ -12,7 +11,6 @@
   <meta name="robots"      content="index, follow"/>
   <link rel="canonical"    href="https://timtimbyaritri.com/"/>
 
-  <!-- ── OPEN GRAPH ────────────────────────── -->
   <meta property="og:type"        content="website"/>
   <meta property="og:url"         content="https://timtimbyaritri.com/"/>
   <meta property="og:title"       content="Timtim by Aritri — Premium Candle Making Supplies"/>
@@ -20,12 +18,10 @@
   <meta property="og:image"       content="https://timtimbyaritri.com/og-image.jpg"/>
   <meta property="og:locale"      content="en_IN"/>
 
-  <!-- ── TWITTER CARD ──────────────────────── -->
   <meta name="twitter:card"        content="summary_large_image"/>
   <meta name="twitter:title"       content="Timtim by Aritri — Candle Making Supplies"/>
   <meta name="twitter:description" content="Premium quality waxes, fragrances, moulds & tools for the passionate candle maker."/>
 
-  <!-- ── STRUCTURED DATA ───────────────────── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,102 +38,33 @@
   }
   </script>
 
-  <!-- ── FONTS ─────────────────────────────── -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
-
-  <!-- ── FAVICON ───────────────────────────── -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>"/>
 
-  <!-- ══════════════════════════════════════
-       CSS — loaded in dependency order
-  ═══════════════════════════════════════ -->
   <link rel="stylesheet" href="css/base.css"/>
   <link rel="stylesheet" href="css/nav.css"/>
   <link rel="stylesheet" href="css/home.css"/>
   <link rel="stylesheet" href="css/product.css"/>
   <link rel="stylesheet" href="css/cart.css"/>
   <link rel="stylesheet" href="css/checkout.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
 </head>
 <body>
 
-<!-- ── SKIP LINK ─────────────────────────────── -->
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="announcement" role="status" aria-live="polite"></div>
 
-<!-- ── ANNOUNCEMENT BAR ──────────────────────── -->
-<div class="announcement" role="status" aria-live="polite">
-  ✦ Free shipping on orders above ₹999 &nbsp;·&nbsp; 24hr dispatch &nbsp;·&nbsp; Pan India delivery ✦
-</div>
-
-<!-- ══════════════════════════════════════════════
-     NAVIGATION
-═══════════════════════════════════════════════ -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-inner">
-
-    <button class="nav-logo" id="nav-logo-btn" aria-label="Timtim by Aritri — Go to homepage">
-      Timtim <span>by</span> Aritri
-    </button>
-
-    <ul class="nav-links" aria-label="Site sections">
-      <li><a onclick="Router.scrollToSection('categories')" role="button" tabindex="0">Shop</a></li>
-      <li><a onclick="Router.scrollToSection('raw-material')" role="button" tabindex="0">Waxes</a></li>
-      <li><a onclick="Router.scrollToSection('fragrances')" role="button" tabindex="0">Fragrances</a></li>
-      <li><a onclick="Router.scrollToSection('moulds')" role="button" tabindex="0">Moulds</a></li>
-      <li><a onclick="Router.scrollToSection('contact')" role="button" tabindex="0">Contact</a></li>
-    </ul>
-
-    <div class="nav-actions">
-      <!-- Wishlist -->
-      <button class="nav-icon-btn" id="wishlist-nav-btn" aria-label="Wishlist">
-        ♡
-        <span class="nav-badge" id="wish-badge" aria-hidden="true">0</span>
-      </button>
-
-      <!-- Cart icon (mobile) -->
-      <button class="nav-icon-btn" onclick="Router.go('cart')" aria-label="Open cart">
-        🛒
-        <span class="nav-badge" id="cart-badge" aria-hidden="true">0</span>
-      </button>
-
-      <!-- Cart button (desktop) -->
-      <button class="nav-cart-btn" id="nav-cart-btn" aria-label="Open cart">
-        Cart (<span id="cart-count-nav">0</span>)
-      </button>
-
-      <!-- Hamburger -->
-      <button class="hamburger" id="hamburger-btn"
-        aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-
-  </div>
+  <div class="nav-inner"></div>
 </nav>
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation menu"></div>
 
-<!-- ── MOBILE MENU ────────────────────────────── -->
-<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation menu">
-  <button class="mobile-nav-link" onclick="Router.scrollToSection('categories');UI.closeMobileNav()">Shop All</button>
-  <button class="mobile-nav-link" onclick="Router.scrollToSection('raw-material');UI.closeMobileNav()">Candle Waxes</button>
-  <button class="mobile-nav-link" onclick="Router.scrollToSection('fragrances');UI.closeMobileNav()">Fragrances</button>
-  <button class="mobile-nav-link" onclick="Router.scrollToSection('moulds');UI.closeMobileNav()">Silicon Moulds</button>
-  <button class="mobile-nav-link" onclick="Router.scrollToSection('contact');UI.closeMobileNav()">Contact</button>
-  <button class="mobile-nav-link" onclick="Router.go('cart');UI.closeMobileNav()">🛒 Cart (<span id="mobile-cart-count">0</span>)</button>
-</div>
-
-<!-- ══════════════════════════════════════════════
-     PAGES  (all pages live in DOM; only one
-             has class="active" at a time)
-═══════════════════════════════════════════════ -->
 <main id="main-content">
 
   <!-- ── HOME ──────────────────────────────── -->
   <div id="page-home" class="page" aria-label="Home page">
-    <!-- Populated by pages/home.html (inlined below) -->
-    <!-- HERO -->
     <section class="hero" aria-label="Hero banner" style="padding:0">
       <div class="hero-text">
         <p class="hero-eyebrow">Timtim by Aritri · Candle Making Supplies</p>
@@ -155,10 +82,8 @@
       </div>
     </section>
 
-    <!-- TRUST BAR -->
     <div class="trust-row" id="trust-row" aria-label="Our promises"></div>
 
-    <!-- CATEGORIES -->
     <section class="section section-white" id="categories" aria-labelledby="cat-heading">
       <div class="sec-head reveal">
         <div><p class="sec-label">Explore</p><h2 class="sec-title" id="cat-heading">Shop by <em>Category</em></h2></div>
@@ -167,7 +92,6 @@
       <div class="cat-grid" id="cat-grid"></div>
     </section>
 
-    <!-- PRODUCTS — WAXES -->
     <section class="section section-cream" id="raw-material" aria-labelledby="wax-heading">
       <div class="sec-head reveal">
         <div><p class="sec-label">Best Sellers</p><h2 class="sec-title" id="wax-heading">Candle <em>Waxes</em></h2></div>
@@ -176,7 +100,6 @@
       <div class="prod-grid" id="wax-grid"></div>
     </section>
 
-    <!-- PROMO BANNERS -->
     <div class="promo-strip" id="moulds">
       <div class="promo-half dark reveal">
         <p class="promo-eyebrow">❤ Valentine's Special</p>
@@ -192,7 +115,6 @@
       </div>
     </div>
 
-    <!-- FRAGRANCES -->
     <section class="section section-gray" id="fragrances" aria-labelledby="frag-heading">
       <div class="sec-head reveal">
         <div><p class="sec-label">Scents</p><h2 class="sec-title" id="frag-heading">Fragrance <em>Oils</em></h2></div>
@@ -201,7 +123,6 @@
       <div class="frag-grid" id="frag-grid"></div>
     </section>
 
-    <!-- NEWSLETTER -->
     <div class="newsletter" id="contact">
       <p class="nl-label">Stay in the loop</p>
       <h2>Offers, launches &amp; candle <em>inspiration</em></h2>
@@ -213,11 +134,10 @@
       </form>
     </div>
 
-    <!-- FOOTER -->
     <footer class="site-footer" role="contentinfo">
       <div class="foot-grid">
         <div class="foot-brand">
-          <button class="foot-logo" onclick="Router.go('home')" aria-label="Home">Timtim <span>by</span> Aritri</button>
+          <a class="foot-logo" href="index.html" aria-label="Home">Timtim <span>by</span> Aritri</a>
           <p>India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers &amp; beginner kits. Dispatch within 24 hours. Pan India delivery.</p>
           <div class="socials">
             <a href="https://www.instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer" class="soc" aria-label="Instagram">📷</a>
@@ -230,18 +150,17 @@
             <li><button onclick="Router.scrollToSection('raw-material')">Candle Waxes</button></li>
             <li><button onclick="Router.scrollToSection('moulds')">Silicon Moulds</button></li>
             <li><button onclick="Router.scrollToSection('fragrances')">Fragrances</button></li>
-            <li><button onclick="Router.scrollToSection('raw-material')">Containers</button></li>
             <li><button onclick="Router.scrollToSection('kits')">Beginner Kits</button></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h5>Help</h5>
+          <h5>Info</h5>
           <ul>
-            <li><a href="#">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="#">Shipping Policy</a></li>
             <li><a href="#">Return Policy</a></li>
             <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
           </ul>
         </div>
         <div class="foot-col">
@@ -272,7 +191,6 @@
 
   <!-- ── PRODUCT DETAIL ─────────────────────── -->
   <div id="page-product" class="page" aria-label="Product detail">
-
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <span onclick="Router.go('home')">Home</span>
       <span class="sep" aria-hidden="true">/</span>
@@ -280,7 +198,6 @@
       <span class="sep" aria-hidden="true">/</span>
       <span id="pd-name-crumb" class="current" aria-current="page">Product</span>
     </nav>
-
     <div class="pd-layout">
       <div class="pd-gallery">
         <div class="pd-main-img" id="pd-main-img" aria-label="Product image"></div>
@@ -319,11 +236,10 @@
         </div>
       </div>
     </div>
-
     <div class="pd-tabs">
       <div class="pd-tab-nav" role="tablist">
-        <button class="pd-tab-btn active" role="tab" aria-selected="true" aria-controls="tab-desc"     onclick="ProductPage.switchTab(this,'tab-desc')">Description</button>
-        <button class="pd-tab-btn"        role="tab" aria-selected="false" aria-controls="tab-usage"   onclick="ProductPage.switchTab(this,'tab-usage')">Usage &amp; Tips</button>
+        <button class="pd-tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-desc"     onclick="ProductPage.switchTab(this,'tab-desc')">Description</button>
+        <button class="pd-tab-btn"        role="tab" aria-selected="false" aria-controls="tab-usage"    onclick="ProductPage.switchTab(this,'tab-usage')">Usage &amp; Tips</button>
         <button class="pd-tab-btn"        role="tab" aria-selected="false" aria-controls="tab-shipping" onclick="ProductPage.switchTab(this,'tab-shipping')">Shipping &amp; Returns</button>
       </div>
       <div id="tab-desc"     class="pd-tab-panel active" role="tabpanel" tabindex="0"><div id="tab-desc-content"></div></div>
@@ -346,14 +262,12 @@
         </ul>
       </div>
     </div>
-
     <div class="related-section">
       <div class="sec-head">
         <div><p class="sec-label">You May Also Like</p><h2 class="sec-title">Related <em>Products</em></h2></div>
       </div>
       <div class="prod-grid" id="related-grid"></div>
     </div>
-
   </div><!-- /#page-product -->
 
   <!-- ── CART ───────────────────────────────── -->
@@ -399,7 +313,6 @@
     </div>
     <div class="checkout-layout">
       <div class="checkout-form">
-        <!-- Contact -->
         <div class="cf-section">
           <h3>Contact Information</h3>
           <div class="form-row">
@@ -421,7 +334,6 @@
             <input class="form-input" id="cf-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel"/>
           </div>
         </div>
-        <!-- Shipping -->
         <div class="cf-section">
           <h3>Shipping Address</h3>
           <div class="form-group">
@@ -456,7 +368,6 @@
             </select>
           </div>
         </div>
-        <!-- Payment -->
         <div class="cf-section">
           <h3>Payment Method</h3>
           <div class="payment-methods" role="radiogroup" aria-label="Payment method">
@@ -506,7 +417,6 @@
         </div>
         <button class="place-order-btn" onclick="CheckoutPage.placeOrder()">Place Order →</button>
       </div>
-      <!-- Summary sidebar -->
       <aside class="checkout-summary" aria-label="Order summary">
         <div class="cs-box">
           <p class="cs-title">Order Summary</p>
@@ -547,19 +457,9 @@
 
 </main>
 
-<!-- ── WHATSAPP FLOAT ─────────────────────────── -->
-<a href="https://wa.me/919899131167"
-   target="_blank" rel="noopener noreferrer"
-   class="wa-float" aria-label="Chat with us on WhatsApp"
-   title="Chat on WhatsApp">💬</a>
-
-<!-- ── TOAST ──────────────────────────────────── -->
+<a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">💬</a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<!-- ══════════════════════════════════════════════
-     JAVASCRIPT — loaded in dependency order:
-     data → state → router → ui → pages → app
-═══════════════════════════════════════════════ -->
 <script src="js/data.js"></script>
 <script src="js/state.js"></script>
 <script src="js/router.js"></script>
@@ -569,6 +469,9 @@
 <script src="js/cart.js"></script>
 <script src="js/checkout.js"></script>
 <script src="js/app.js"></script>
-
+<script src="js/nav.js"></script>
+<script>
+  document.getElementById('foot-year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
