@@ -84,7 +84,13 @@ export default function Cart() {
             <div className="cart-items-list" role="list">
               {items.map(item => (
                 <div className="cart-item-row" role="listitem" key={item.id}>
-                  <div className={`cart-item-img ${item.bg}`} aria-hidden="true">{item.emoji}</div>
+                  {item.imageUrl ? (
+                    <div className="cart-item-img" style={{ overflow: 'hidden' }}>
+                      <img src={item.imageUrl} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
+                    </div>
+                  ) : (
+                    <div className={`cart-item-img ${item.bg}`} aria-hidden="true">{item.emoji || '📦'}</div>
+                  )}
                   <div>
                     <p className="ci-name" onClick={() => navigate(`/product/${item.id}`)} title="View product" style={{ cursor: 'pointer' }}>
                       {item.name}

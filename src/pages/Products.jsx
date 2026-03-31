@@ -65,28 +65,25 @@ export default function Products() {
         ))}
       </div>
       
-      <div id="shop-grid">
+      <div id="shop-grid" className="shop-tile-grid">
         {productsToDisplay.length === 0 ? (
           <p style={{ textAlign: 'center', width: '100%', gridColumn: '1/-1' }}>No products found in this category.</p>
         ) : (
           productsToDisplay.map(p => (
-            <div className="prod-card reveal active" key={p.id} onClick={() => handleProductClick(p.id)}>
-              <div className="prod-img-wrap">
-                {p.badges && p.badges.map(b => (
-                  <span className={`prod-badge ${b}`} key={b}>{b === 'sale' ? 'Sale' : b === 'new' ? 'New' : 'Popular'}</span>
-                ))}
-                <div className={`prod-img ${p.imageUrl ? '' : p.bg}`} style={p.imageUrl ? { backgroundImage: `url('${p.imageUrl}')` } : {}}>
-                  {!p.imageUrl && p.emoji}
+            <div className="shop-tile" key={p.id} onClick={() => handleProductClick(p.id)}>
+              {p.badges && p.badges.map(b => (
+                <span className={`prod-badge ${b}`} key={b}>{b === 'sale' ? 'Sale' : b === 'new' ? 'New' : 'Popular'}</span>
+              ))}
+              {p.imageUrl ? (
+                <img src={p.imageUrl} alt={p.name} className="shop-tile-img" />
+              ) : (
+                <div className={`shop-tile-placeholder ${p.bg || 'c-wax'}`}>
+                  {p.emoji || '📦'}
                 </div>
-                <button className="quick-add" aria-label="Add to cart" onClick={(e) => { e.stopPropagation(); navigate('/cart'); }}>+</button>
-              </div>
-              <div className="prod-body">
-                <p className="prod-cat">{p.cat}</p>
-                <h3 className="prod-name">{p.shortName || p.name}</h3>
-                <div className="prod-prices">
-                  <span className="prod-price">{formatPrice(p.price)}</span>
-                  {p.originalPrice && <span className="prod-orig">{formatPrice(p.originalPrice)}</span>}
-                </div>
+              )}
+              <div className="shop-tile-overlay">
+                <h3 className="shop-tile-name">{p.shortName || p.name}</h3>
+                <span className="shop-tile-price">{formatPrice(p.price)}</span>
               </div>
             </div>
           ))

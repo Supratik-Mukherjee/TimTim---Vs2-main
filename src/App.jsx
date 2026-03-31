@@ -9,6 +9,7 @@ import Admin from './pages/Admin';
 import Products from './pages/Products';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="product/:id" element={<Product />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </BrowserRouter>

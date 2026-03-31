@@ -3,7 +3,26 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 
 export default function Layout() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
+
+  // Read cart count from sessionStorage
+  const updateCartCount = () => {
+    try {
+      const cart = JSON.parse(sessionStorage.getItem('tt_cart') || '[]');
+      const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+      setCartCount(count);
+    } catch {
+      setCartCount(0);
+    }
+  };
+
+  // Update on mount and whenever cart changes
+  useEffect(() => {
+    updateCartCount();
+    window.addEventListener('cart-updated', updateCartCount);
+    return () => window.removeEventListener('cart-updated', updateCartCount);
+  }, []);
 
   useEffect(() => {
     setMobileNavOpen(false);
@@ -33,10 +52,10 @@ export default function Layout() {
               ♡ <span className="nav-badge" id="wish-badge" aria-hidden="true">0</span>
             </button>
             <Link className="nav-icon-btn" to="/cart" aria-label="Open cart">
-              🛒 <span className="nav-badge" id="cart-badge" aria-hidden="true">0</span>
+              🛒 <span className={`nav-badge ${cartCount > 0 ? 'show' : ''}`} id="cart-badge" aria-hidden="true">{cartCount}</span>
             </Link>
             <Link className="nav-cart-btn" to="/cart" aria-label="Open cart">
-              Cart (<span id="cart-count-nav">0</span>)
+              Cart (<span id="cart-count-nav">{cartCount}</span>)
             </Link>
             <button 
               className={`hamburger ${mobileNavOpen ? 'open' : ''}`} 
@@ -56,7 +75,7 @@ export default function Layout() {
         <Link className="mobile-nav-link" to="/about">About Us</Link>
         <Link className="mobile-nav-link" to="/contact">Contact</Link>
         <Link className="mobile-nav-link" to="/login">👤 My Account</Link>
-        <Link className="mobile-nav-link" to="/cart">🛒 Cart (<span id="mobile-cart-count">0</span>)</Link>
+        <Link className="mobile-nav-link" to="/cart">🛒 Cart (<span id="mobile-cart-count">{cartCount}</span>)</Link>
       </div>
 
       <main id="main-content">
