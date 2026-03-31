@@ -12,6 +12,10 @@ export default function Admin() {
   const [form, setForm] = useState({
     name: '', price: '', qty: '', sku: '', cat: 'Candle Waxes', desc: ''
   });
+  const [hasWeightTiers, setHasWeightTiers] = useState(false);
+  const [weightTiers, setWeightTiers] = useState([
+    { weight: '1 kg', price: '' }
+  ]);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [msg, setMsg] = useState({ text: '', type: '' });
@@ -63,10 +67,15 @@ export default function Admin() {
         }
       }
 
+      // Build weight tiers if enabled
+      const tiers = hasWeightTiers
+        ? weightTiers.filter(t => t.weight && t.price).map(t => ({ weight: t.weight, price: Number(t.price) }))
+        : [];
+
       const productData = {
         name: form.name,
         shortName: form.name,
-        price: Number(form.price),
+        price: hasWeightTiers && tiers.length > 0 ? tiers[0].price : Number(form.price),
         sku: form.sku,
         cat: form.cat,
         desc: form.desc,
@@ -74,6 +83,7 @@ export default function Admin() {
         imageUrl: imageUrl,
         bg: 'c-wax',
         badges: [],
+        weightTiers: tiers,
         createdAt: serverTimestamp()
       };
 
@@ -81,6 +91,8 @@ export default function Admin() {
 
       showMsg("Product added successfully!");
       setForm({ name: '', price: '', qty: '', sku: '', cat: 'Candle Waxes', desc: '' });
+      setHasWeightTiers(false);
+      setWeightTiers([{ weight: '1 kg', price: '' }]);
       setFile(null);
       e.target.reset();
     } catch (err) {
@@ -118,16 +130,62 @@ export default function Admin() {
               <input type="text" id="p-name" required placeholder="e.g. Soy Wax WP565" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
             </div>
 
-            <div className="form-row" style={{ display: 'flex', gap: '12px' }}>
-              <div className="form-group" style={{ flex: 1 }}>
-                <label htmlFor="p-price">Price (₹)</label>
-                <input type="number" id="p-price" required placeholder="295" min="0" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
-              </div>
-              <div className="form-group" style={{ flex: 1 }}>
+            <div className="form-row">
+              {!hasWeightTiers && (
+                <div className="form-group">
+                  <label htmlFor="p-price">Price (₹)</label>
+                  <input type="number" id="p-price" required={!hasWeightTiers} placeholder="295" min="0" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
+                </div>
+              )}
+              <div className="form-group">
                 <label htmlFor="p-qty">Stock Qty</label>
                 <input type="number" id="p-qty" required placeholder="50" min="0" value={form.qty} onChange={e => setForm({ ...form, qty: e.target.value })} />
               </div>
             </div>
+
+            <div className="form-group">
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                <input type="checkbox" checked={hasWeightTiers} onChange={e => setHasWeightTiers(e.target.checked)} style={{ accentColor: 'var(--amber, #C4883A)' }} />
+                Has Weight-Based Pricing
+              </label>
+            </div>
+
+            {hasWeightTiers && (
+              <div className="form-group" style={{ background: '#f8f6f2', padding: '16px', borderRadius: '6px', marginBottom: '16px' }}>
+                <label style={{ marginBottom: '10px', display: 'block', fontWeight: 600 }}>Weight Tiers</label>
+                {weightTiers.map((tier, idx) => (
+                  <div key={idx} style={{ display: 'flex', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
+                    <input
+                      type="text"
+                      placeholder="e.g. 1 kg"
+                      value={tier.weight}
+                      onChange={e => {
+                        const updated = [...weightTiers];
+                        updated[idx].weight = e.target.value;
+                        setWeightTiers(updated);
+                      }}
+                      style={{ flex: 1, padding: '8px 12px', border: '1px solid #d4cfc6', borderRadius: '4px', fontSize: '13px' }}
+                    />
+                    <input
+                      type="number"
+                      placeholder="Price ₹"
+                      min="0"
+                      value={tier.price}
+                      onChange={e => {
+                        const updated = [...weightTiers];
+                        updated[idx].price = e.target.value;
+                        setWeightTiers(updated);
+                      }}
+                      style={{ flex: 1, padding: '8px 12px', border: '1px solid #d4cfc6', borderRadius: '4px', fontSize: '13px' }}
+                    />
+                    {weightTiers.length > 1 && (
+                      <button type="button" onClick={() => setWeightTiers(weightTiers.filter((_, i) => i !== idx))} style={{ background: '#ef4444', color: 'white', border: 'none', borderRadius: '4px', padding: '6px 10px', cursor: 'pointer', fontSize: '14px', lineHeight: 1 }}>×</button>
+                    )}
+                  </div>
+                ))}
+                <button type="button" onClick={() => setWeightTiers([...weightTiers, { weight: '', price: '' }])} style={{ background: 'none', border: '1px dashed #aaa', padding: '6px 14px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', color: '#666', marginTop: '4px' }}>+ Add Tier</button>
+              </div>
+            )}
 
             <div className="form-group">
               <label htmlFor="p-sku">SKU</label>

@@ -26,9 +26,9 @@ export default function Cart() {
     window.dispatchEvent(new Event('cart-updated'));
   };
 
-  const changeQty = (id, delta) => {
+  const changeQty = (key, delta) => {
     const updated = items.map(item => {
-      if (item.id === id) {
+      if ((item.cartKey || item.id) === key) {
         const newQty = Math.max(1, Math.min(50, (item.qty || 1) + delta));
         return { ...item, qty: newQty };
       }
@@ -37,8 +37,8 @@ export default function Cart() {
     saveCart(updated);
   };
 
-  const removeItem = (id) => {
-    const updated = items.filter(item => item.id !== id);
+  const removeItem = (key) => {
+    const updated = items.filter(item => (item.cartKey || item.id) !== key);
     saveCart(updated);
   };
 
@@ -83,7 +83,7 @@ export default function Cart() {
           ) : (
             <div className="cart-items-list" role="list">
               {items.map(item => (
-                <div className="cart-item-row" role="listitem" key={item.id}>
+                <div className="cart-item-row" role="listitem" key={item.cartKey || item.id}>
                   {item.imageUrl ? (
                     <div className="cart-item-img" style={{ overflow: 'hidden' }}>
                       <img src={item.imageUrl} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
@@ -95,16 +95,19 @@ export default function Cart() {
                     <p className="ci-name" onClick={() => navigate(`/product/${item.id}`)} title="View product" style={{ cursor: 'pointer' }}>
                       {item.name}
                     </p>
+                    {item.selectedWeight && (
+                      <p style={{ fontSize: '11px', color: 'var(--amber-dark)', fontWeight: 500, marginBottom: '4px' }}>⚖️ {item.selectedWeight}</p>
+                    )}
                     <p className="ci-unit-price">{formatPrice(item.price)} each</p>
                     <div className="ci-qty-ctrl" role="group" aria-label={`Quantity for ${item.name}`}>
-                      <button className="ci-qty-btn" onClick={() => changeQty(item.id, -1)} aria-label="Decrease quantity">−</button>
+                      <button className="ci-qty-btn" onClick={() => changeQty(item.cartKey || item.id, -1)} aria-label="Decrease quantity">−</button>
                       <span className="ci-qty-val" aria-live="polite">{item.qty || 1}</span>
-                      <button className="ci-qty-btn" onClick={() => changeQty(item.id, 1)} aria-label="Increase quantity">+</button>
+                      <button className="ci-qty-btn" onClick={() => changeQty(item.cartKey || item.id, 1)} aria-label="Increase quantity">+</button>
                     </div>
                   </div>
                   <div className="ci-price-col">
                     <span className="ci-price">{formatPrice(item.price * (item.qty || 1))}</span>
-                    <button className="ci-remove" onClick={() => removeItem(item.id)} aria-label={`Remove ${item.name}`}>Remove</button>
+                    <button className="ci-remove" onClick={() => removeItem(item.cartKey || item.id)} aria-label={`Remove ${item.name}`}>Remove</button>
                   </div>
                 </div>
               ))}

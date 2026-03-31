@@ -10,6 +10,13 @@ export default function Product() {
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
+  const [selectedWeight, setSelectedWeight] = useState(null);
+  const [toast, setToast] = useState({ show: false, text: '', type: 'success' });
+
+  const showToast = (text, type = 'success') => {
+    setToast({ show: true, text, type });
+    setTimeout(() => setToast({ show: false, text: '', type: 'success' }), 2500);
+  };
 
   useEffect(() => {
     async function fetchProduct() {
@@ -45,26 +52,44 @@ export default function Product() {
     window.scrollTo(0, 0);
   }, [id]);
 
+  // Set default weight when product loads
+  useEffect(() => {
+    if (product && product.weightTiers && product.weightTiers.length > 0) {
+      setSelectedWeight(product.weightTiers[0]);
+    } else {
+      setSelectedWeight(null);
+    }
+  }, [product]);
+
   const handleAddToCart = () => {
     if (!product) return;
     
+    const activePrice = selectedWeight ? selectedWeight.price : product.price;
+    const cartKey = selectedWeight ? `${product.id}_${selectedWeight.weight}` : product.id;
+    
     const cart = JSON.parse(sessionStorage.getItem('tt_cart') || '[]');
-    const existing = cart.find(item => item.id === product.id);
+    const existing = cart.find(item => item.cartKey === cartKey);
     
     let newCart;
     if (existing) {
       newCart = cart.map(item => 
-        item.id === product.id ? { ...item, qty: item.qty + qty } : item
+        item.cartKey === cartKey ? { ...item, qty: item.qty + qty } : item
       );
     } else {
-      newCart = [...cart, { ...product, qty }];
+      newCart = [...cart, {
+        ...product,
+        cartKey,
+        price: activePrice,
+        selectedWeight: selectedWeight ? selectedWeight.weight : null,
+        qty
+      }];
     }
     
     sessionStorage.setItem('tt_cart', JSON.stringify(newCart));
     window.dispatchEvent(new Event('cart-updated'));
     
-    // Show a custom toast instead of alert if possible, but alert is fine for now
-    alert(`Success! Added ${qty} × ${product.shortName || product.name} to your cart.`);
+    const weightLabel = selectedWeight ? ` (${selectedWeight.weight})` : '';
+    showToast(`✓ Added ${qty} × ${product.shortName || product.name}${weightLabel} to cart`);
   };
 
   if (loading) return (
@@ -112,10 +137,45 @@ export default function Product() {
             <p className="product-sku">SKU: {product.sku}</p>
             
             <div className="product-price-row">
-              <span className="current-price">₹{product.price}</span>
-              {product.originalPrice && <span className="old-price">₹{product.originalPrice}</span>}
-              {product.originalPrice && <span className="discount-tag">Save {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%</span>}
+              <span className="current-price">₹{selectedWeight ? selectedWeight.price : product.price}</span>
+              {!selectedWeight && product.originalPrice && <span className="old-price">₹{product.originalPrice}</span>}
+              {!selectedWeight && product.originalPrice && <span className="discount-tag">Save {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%</span>}
+              {selectedWeight && <span style={{ fontSize: '13px', color: 'var(--warm-gray)', marginLeft: '4px' }}>for {selectedWeight.weight}</span>}
             </div>
+
+            {product.weightTiers && product.weightTiers.length > 0 && (
+              <div className="weight-selector" style={{ marginBottom: '24px' }}>
+                <p style={{ fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--warm-gray)', fontWeight: 500, marginBottom: '10px' }}>Select Weight</p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {product.weightTiers.map((tier, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedWeight(tier)}
+                      style={{
+                        padding: '10px 18px',
+                        border: selectedWeight && selectedWeight.weight === tier.weight ? '2px solid var(--amber, #C4883A)' : '1px solid var(--mid-gray, #D4CFC6)',
+                        background: selectedWeight && selectedWeight.weight === tier.weight ? 'var(--amber-pale, #FBF2E3)' : 'white',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '13px',
+                        fontWeight: selectedWeight && selectedWeight.weight === tier.weight ? 600 : 400,
+                        color: 'var(--charcoal, #1C1A18)',
+                        transition: 'all 0.18s ease',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '2px',
+                        minWidth: '80px',
+                      }}
+                    >
+                      <span style={{ fontWeight: 600 }}>{tier.weight}</span>
+                      <span style={{ fontSize: '12px', color: 'var(--amber-dark, #8B5E1A)' }}>₹{tier.price}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="product-description">
               <h3>Description</h3>
@@ -168,6 +228,35 @@ export default function Product() {
           </section>
         )}
       </div>
+
+      {toast.show && (
+        <div style={{
+          position: 'fixed',
+          bottom: '90px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: toast.type === 'error' ? '#ef4444' : '#16a34a',
+          color: 'white',
+          padding: '14px 28px',
+          borderRadius: '6px',
+          fontSize: '14px',
+          fontWeight: 500,
+          fontFamily: 'var(--font-sans)',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
+          zIndex: 900,
+          whiteSpace: 'nowrap',
+          animation: 'toastSlideIn 0.3s ease',
+        }}>
+          {toast.text}
+        </div>
+      )}
+
+      <style>{`
+        @keyframes toastSlideIn {
+          from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+      `}</style>
     </div>
   );
 }

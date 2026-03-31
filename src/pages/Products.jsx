@@ -83,7 +83,9 @@ export default function Products() {
               )}
               <div className="shop-tile-overlay">
                 <h3 className="shop-tile-name">{p.shortName || p.name}</h3>
-                <span className="shop-tile-price">{formatPrice(p.price)}</span>
+                <span className="shop-tile-price">
+                  {p.weightTiers && p.weightTiers.length > 0 ? `from ${formatPrice(p.price)}` : formatPrice(p.price)}
+                </span>
               </div>
             </div>
           ))

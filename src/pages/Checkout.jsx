@@ -79,7 +79,8 @@ export default function Checkout() {
     items.forEach((item, i) => {
       const qty = item.qty || 1;
       const lineTotal = item.price * qty;
-      msg += `${i + 1}. ${item.name}\n`;
+      const weightLabel = item.selectedWeight ? ` [${item.selectedWeight}]` : '';
+      msg += `${i + 1}. ${item.name}${weightLabel}\n`;
       msg += `   ${qty} × ₹${item.price} = ₹${lineTotal}\n`;
     });
 
@@ -339,9 +340,11 @@ export default function Checkout() {
             <h2 className="cs-title">Order Summary</h2>
 
             {items.map(item => (
-              <div className="cs-item" key={item.id}>
+              <div className="cs-item" key={item.cartKey || item.id}>
                 <span className="cs-item-name">
-                  {item.name} <span style={{ color: 'var(--warm-gray)' }}>× {item.qty || 1}</span>
+                  {item.name}
+                  {item.selectedWeight && <span style={{ color: 'var(--amber-dark)', fontSize: '11px' }}> ({item.selectedWeight})</span>}
+                  {' '}<span style={{ color: 'var(--warm-gray)' }}>× {item.qty || 1}</span>
                 </span>
                 <span className="cs-item-price">{formatPrice(item.price * (item.qty || 1))}</span>
               </div>

@@ -141,13 +141,15 @@ body {
   gap: 16px;
 }
 
-.form-group {
+/* Scoped form-group inside admin to avoid conflicts with checkout */
+#admin-dashboard .form-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  margin-bottom: 0;
 }
 
-.form-group label {
+#admin-dashboard .form-group label {
   font-size: 12px;
   font-weight: 600;
   color: #64748b;
@@ -155,19 +157,44 @@ body {
   letter-spacing: 0.5px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 10px;
+#admin-dashboard .form-group input,
+#admin-dashboard .form-group select,
+#admin-dashboard .form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
   border: 1px solid var(--admin-border);
   border-radius: 4px;
   font-family: inherit;
   font-size: 14px;
+  box-sizing: border-box;
+  background: white;
+  color: var(--admin-text);
+  transition: border-color 0.2s;
 }
 
-.form-group textarea {
+#admin-dashboard .form-group input:focus,
+#admin-dashboard .form-group select:focus,
+#admin-dashboard .form-group textarea:focus {
+  outline: none;
+  border-color: var(--admin-accent);
+  box-shadow: 0 0 0 3px rgba(196, 136, 58, 0.1);
+}
+
+#admin-dashboard .form-group textarea {
   resize: vertical;
   min-height: 80px;
+}
+
+/* Side-by-side row for Price + Qty */
+#admin-dashboard .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* When weight tiers is checked, only qty shows — make it full width */
+#admin-dashboard .form-row > .form-group:only-child {
+  grid-column: 1 / -1;
 }
 
 .submit-btn {
@@ -180,7 +207,10 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-top: 8px;
+  width: 100%;
+  transition: background 0.2s;
 }
+.submit-btn:hover { background: #a87630; }
 .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* ── TABLE ──────────────────────────────────── */
