@@ -53,9 +53,14 @@ export default function Admin() {
     try {
       let imageUrl = null;
       if (file) {
-        const fileRef = ref(storage, `products/${Date.now()}_${file.name}`);
-        const snapshot = await uploadBytes(fileRef, file);
-        imageUrl = await getDownloadURL(snapshot.ref);
+        try {
+          const fileRef = ref(storage, `products/${Date.now()}_${file.name}`);
+          const snapshot = await uploadBytes(fileRef, file);
+          imageUrl = await getDownloadURL(snapshot.ref);
+        } catch (storageErr) {
+          console.error("Storage Error:", storageErr);
+          showMsg("Image upload failed, creating without image.", "error");
+        }
       }
 
       const productData = {
@@ -80,7 +85,7 @@ export default function Admin() {
       e.target.reset();
     } catch (err) {
       console.error(err);
-      showMsg("Error uploading product", 'error');
+      showMsg(err.message || "Error uploading product", 'error');
     } finally {
       setUploading(false);
     }
