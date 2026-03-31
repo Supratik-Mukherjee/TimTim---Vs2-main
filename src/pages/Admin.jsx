@@ -8,7 +8,7 @@ export default function Admin() {
   const { currentUser } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const [form, setForm] = useState({
     name: '', price: '', qty: '', sku: '', cat: 'Candle Waxes', desc: ''
   });
@@ -23,7 +23,7 @@ export default function Admin() {
 
   useEffect(() => {
     if (!currentUser) return;
-    
+
     const unsub = onSnapshot(collection(db, 'products'), (snap) => {
       const fetched = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       setProducts(fetched);
@@ -78,7 +78,7 @@ export default function Admin() {
       };
 
       await addDoc(collection(db, 'products'), productData);
-      
+
       showMsg("Product added successfully!");
       setForm({ name: '', price: '', qty: '', sku: '', cat: 'Candle Waxes', desc: '' });
       setFile(null);
@@ -97,7 +97,7 @@ export default function Admin() {
         <div className="auth-box" style={{ textAlign: 'center' }}>
           <h2>Admin Access Required</h2>
           <p style={{ marginBottom: '20px', color: 'var(--warm-gray)' }}>You must be signed in to view this page.</p>
-          <button className="auth-btn" onClick={() => window.location.href='/login'}>Go to Login</button>
+          <button className="auth-btn" onClick={() => window.location.href = '/login'}>Go to Login</button>
         </div>
       </div>
     );
@@ -115,28 +115,28 @@ export default function Admin() {
           <form className="add-product-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="p-name">Product Title</label>
-              <input type="text" id="p-name" required placeholder="e.g. Soy Wax WP565" value={form.name} onChange={e => setForm({...form, name: e.target.value})} />
+              <input type="text" id="p-name" required placeholder="e.g. Soy Wax WP565" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
             </div>
-            
+
             <div className="form-row" style={{ display: 'flex', gap: '12px' }}>
               <div className="form-group" style={{ flex: 1 }}>
                 <label htmlFor="p-price">Price (₹)</label>
-                <input type="number" id="p-price" required placeholder="295" min="0" value={form.price} onChange={e => setForm({...form, price: e.target.value})} />
+                <input type="number" id="p-price" required placeholder="295" min="0" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
               </div>
               <div className="form-group" style={{ flex: 1 }}>
                 <label htmlFor="p-qty">Stock Qty</label>
-                <input type="number" id="p-qty" required placeholder="50" min="0" value={form.qty} onChange={e => setForm({...form, qty: e.target.value})} />
+                <input type="number" id="p-qty" required placeholder="50" min="0" value={form.qty} onChange={e => setForm({ ...form, qty: e.target.value })} />
               </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="p-sku">SKU</label>
-              <input type="text" id="p-sku" required placeholder="WP565" value={form.sku} onChange={e => setForm({...form, sku: e.target.value})} />
+              <input type="text" id="p-sku" required placeholder="WP565" value={form.sku} onChange={e => setForm({ ...form, sku: e.target.value })} />
             </div>
 
             <div className="form-group">
               <label htmlFor="p-cat">Category</label>
-              <select id="p-cat" required value={form.cat} onChange={e => setForm({...form, cat: e.target.value})}>
+              <select id="p-cat" required value={form.cat} onChange={e => setForm({ ...form, cat: e.target.value })}>
                 <option value="Candle Waxes">Candle Waxes</option>
                 <option value="Silicon Moulds">Silicon Moulds</option>
                 <option value="Fragrance Oils">Fragrance Oils</option>
@@ -148,7 +148,7 @@ export default function Admin() {
 
             <div className="form-group">
               <label htmlFor="p-desc">Description</label>
-              <textarea id="p-desc" required placeholder="Describe the product..." value={form.desc} onChange={e => setForm({...form, desc: e.target.value})}></textarea>
+              <textarea id="p-desc" required placeholder="Describe the product..." value={form.desc} onChange={e => setForm({ ...form, desc: e.target.value })}></textarea>
             </div>
 
             <div className="form-group">
@@ -193,7 +193,7 @@ export default function Admin() {
                       </div>
                     </td>
                     <td style={{ fontWeight: 600, padding: '12px' }}>{p.name}</td>
-                    <td style={{ fontSize: '12px', color: '#64748b', padding: '12px' }}>{p.sku}<br/>{p.cat}</td>
+                    <td style={{ fontSize: '12px', color: '#64748b', padding: '12px' }}>{p.sku}<br />{p.cat}</td>
                     <td style={{ fontWeight: 500, padding: '12px' }}>₹{p.price}</td>
                     <td style={{ padding: '12px' }}>
                       <span className={`status-badge ${p.quantity < 10 ? 'low' : ''}`} style={{ padding: '4px 8px', borderRadius: 12, background: p.quantity < 10 ? '#fee2e2' : '#dcfce7', color: p.quantity < 10 ? '#991b1b' : '#166534', fontSize: 12 }}>
