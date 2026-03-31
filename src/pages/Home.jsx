@@ -11,6 +11,8 @@ export default function Home() {
   useEffect(() => {
     const unsub = onSnapshot(collection(db, 'products'), (snap) => {
       setCloudProducts(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    }, (err) => {
+      console.error("Firestore read error:", err);
     });
     return () => unsub();
   }, []);
@@ -100,7 +102,7 @@ export default function Home() {
                 {p.badges && p.badges.map(b => (
                   <span className={`prod-badge ${b}`} key={b}>{b === 'sale' ? 'Sale' : b === 'new' ? 'New' : 'Popular'}</span>
                 ))}
-                <div className={`prod-img ${p.imageUrl ? '' : p.bg}`} style={p.imageUrl ? { backgroundImage: `url(${p.imageUrl})` } : {}}>
+                <div className={`prod-img ${p.imageUrl ? '' : p.bg}`} style={p.imageUrl ? { backgroundImage: `url('${p.imageUrl}')` } : {}}>
                   {!p.imageUrl && p.emoji}
                 </div>
                 <button className="quick-add" aria-label="Add to cart" onClick={(e) => { e.stopPropagation(); navigate('/cart'); }}>+</button>

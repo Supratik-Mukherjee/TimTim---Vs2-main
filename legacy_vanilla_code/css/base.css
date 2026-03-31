@@ -89,7 +89,7 @@ button { cursor: pointer; }
 .skip-link:focus { top: 0; }
 
 /* ── PAGE SYSTEM ───────────────────────────── */
-.page { display: none; min-height: 100vh; }
+.page { min-height: 100vh; }
 .page.active {
   display: block;
   animation: pageFade .28s ease both;

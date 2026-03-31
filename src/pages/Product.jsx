@@ -151,7 +151,7 @@ export default function Product() {
               {related.map(rp => (
                 <Link to={`/product/${rp.id}`} key={rp.id} className="prod-card">
                   <div className="prod-img-wrap">
-                    <div className={`prod-img ${rp.imageUrl ? '' : (rp.bg || 'c-wax')}`} style={rp.imageUrl ? { backgroundImage: `url(${rp.imageUrl})` } : {}}>
+                    <div className={`prod-img ${rp.imageUrl ? '' : (rp.bg || 'c-wax')}`} style={rp.imageUrl ? { backgroundImage: `url('${rp.imageUrl}')` } : {}}>
                       {!rp.imageUrl && (rp.emoji || '📦')}
                     </div>
                   </div>
