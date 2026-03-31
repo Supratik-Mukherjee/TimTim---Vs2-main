@@ -1,0 +1,30 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
+
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Admin from './pages/Admin';
+import Products from './pages/Products';
+import Cart from './pages/Cart';
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="admin" element={<Admin />} />
+            <Route path="products" element={<Products />} />
+            <Route path="cart" element={<Cart />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
+}
+
+export default App;
