@@ -48,21 +48,29 @@ const ProductPage = (() => {
     const thumbEl = document.getElementById('pd-thumbs');
     if (!mainEl || !thumbEl) return;
 
-    // Set main image
-    mainEl.className = 'pd-main-img ' + product.bg;
-    mainEl.innerHTML = `<span aria-hidden="true">${UI.esc(product.emoji)}</span>`;
+    if (product.imageUrl) {
+      mainEl.className = 'pd-main-img';
+      mainEl.style.backgroundImage = `url('${product.imageUrl}')`;
+      mainEl.style.backgroundSize = 'cover';
+      mainEl.style.backgroundPosition = 'center';
+      mainEl.innerHTML = '';
+      thumbEl.innerHTML = '';
+    } else {
+      mainEl.className = 'pd-main-img ' + product.bg;
+      mainEl.style.backgroundImage = '';
+      mainEl.innerHTML = `<span aria-hidden="true">${UI.esc(product.emoji)}</span>`;
 
-    // Thumb set (main + 2 dummy variants)
-    const thumbEmojis = [product.emoji, '🕯️', '📦'];
-    thumbEl.innerHTML = thumbEmojis.map((em, i) => `
-      <div
-        class="pd-thumb ${product.bg}${i === 0 ? ' active' : ''}"
-        onclick="ProductPage._selectThumb(this)"
-        aria-label="Product image ${i + 1}"
-        role="button"
-        tabindex="0"
-      >${UI.esc(em)}</div>
-    `).join('');
+      const thumbEmojis = [product.emoji, '🕯️', '📦'];
+      thumbEl.innerHTML = thumbEmojis.map((em, i) => `
+        <div
+          class="pd-thumb ${product.bg}${i === 0 ? ' active' : ''}"
+          onclick="ProductPage._selectThumb(this)"
+          aria-label="Product image ${i + 1}"
+          role="button"
+          tabindex="0"
+        >${UI.esc(em)}</div>
+      `).join('');
+    }
   }
 
   function _selectThumb(btn) {

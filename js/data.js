@@ -6,7 +6,8 @@
 const DATA = {
 
   /* ── PRODUCTS ─────────────────────────────── */
-  products: [
+  products: [],
+  legacyProducts: [
     {
       id: 1,
       name: 'Soy Wax — Pure White WP565',
@@ -19,12 +20,12 @@ const DATA = {
       badges: ['popular'],
       desc: 'Our best-selling soy wax, specially formulated for container candles. WP565 offers a clean, smooth finish with excellent fragrance throw and natural white colour. Sourced from non-GMO soybeans.',
       specs: [
-        { label: 'Type',          value: 'Container Soy Wax' },
-        { label: 'Melt Point',    value: '46–49 °C' },
-        { label: 'Fragrance Load',value: 'Up to 10%' },
-        { label: 'Pack Sizes',    value: '500g / 1kg / 5kg' },
-        { label: 'Colour',        value: 'Natural White' },
-        { label: 'Origin',        value: 'USA / India' },
+        { label: 'Type', value: 'Container Soy Wax' },
+        { label: 'Melt Point', value: '46–49 °C' },
+        { label: 'Fragrance Load', value: 'Up to 10%' },
+        { label: 'Pack Sizes', value: '500g / 1kg / 5kg' },
+        { label: 'Colour', value: 'Natural White' },
+        { label: 'Origin', value: 'USA / India' },
       ],
       usage: `<h4>How to Use</h4>
         <p>Melt WP565 at 75–80 °C using a double boiler. Add fragrance at 65–70 °C and stir for 2 minutes. Pour into containers at 55–60 °C. Allow 24 hours cure time before burning.</p>
@@ -48,12 +49,12 @@ const DATA = {
       badges: [],
       desc: 'Formulated for free-standing pillar and mould candles. WP666 has a higher melt point for shape retention and gives a beautiful rustic, natural look when cooled.',
       specs: [
-        { label: 'Type',          value: 'Pillar / Mould Soy Wax' },
-        { label: 'Melt Point',    value: '58–62 °C' },
-        { label: 'Fragrance Load',value: 'Up to 8%' },
-        { label: 'Pack Sizes',    value: '500g / 1kg / 5kg' },
-        { label: 'Colour',        value: 'Off-White / Creamy' },
-        { label: 'Finish',        value: 'Matte Rustic' },
+        { label: 'Type', value: 'Pillar / Mould Soy Wax' },
+        { label: 'Melt Point', value: '58–62 °C' },
+        { label: 'Fragrance Load', value: 'Up to 8%' },
+        { label: 'Pack Sizes', value: '500g / 1kg / 5kg' },
+        { label: 'Colour', value: 'Off-White / Creamy' },
+        { label: 'Finish', value: 'Matte Rustic' },
       ],
       usage: `<h4>How to Use</h4>
         <p>Melt at 85–90 °C. Add fragrance at 75 °C and stir well. Pour into silicon moulds at 65–70 °C. Allow full 48 hours curing before unmoulding.</p>
@@ -78,12 +79,12 @@ const DATA = {
       originalPrice: 500,
       desc: 'Unique granular pearl wax creates stunning "snow" and "rocky road" textured candles. Fill any container — no melting required! Perfect for beginners and visual art candles.',
       specs: [
-        { label: 'Type',          value: 'Granular / Pearl Wax' },
-        { label: 'Fragrance Load',value: 'Up to 5%' },
-        { label: 'Pack Sizes',    value: '500g / 1kg' },
-        { label: 'Colour',        value: 'Natural White' },
-        { label: 'Use',           value: 'No-melt Container Filling' },
-        { label: 'Difficulty',    value: 'Beginner Friendly' },
+        { label: 'Type', value: 'Granular / Pearl Wax' },
+        { label: 'Fragrance Load', value: 'Up to 5%' },
+        { label: 'Pack Sizes', value: '500g / 1kg' },
+        { label: 'Colour', value: 'Natural White' },
+        { label: 'Use', value: 'No-melt Container Filling' },
+        { label: 'Difficulty', value: 'Beginner Friendly' },
       ],
       usage: `<h4>How to Use</h4>
         <p>Pearl wax can be used directly without melting. Mix fragrance oil with the granules (up to 5%), toss well and fill your container. Insert a wick and you're done!</p>
@@ -107,12 +108,12 @@ const DATA = {
       badges: ['new'],
       desc: '100% pure natural beeswax sourced from ethical apiaries. Burns slower and cleaner than paraffin, with a naturally warm honey scent. Ideal for tapers, votives, and organic candles.',
       specs: [
-        { label: 'Type',          value: 'Pure Beeswax' },
-        { label: 'Melt Point',    value: '62–65 °C' },
-        { label: 'Fragrance Load',value: 'Up to 6%' },
-        { label: 'Pack Sizes',    value: '100g / 500g / 1kg' },
-        { label: 'Colour',        value: 'Natural Yellow' },
-        { label: 'Scent',         value: 'Natural Honey' },
+        { label: 'Type', value: 'Pure Beeswax' },
+        { label: 'Melt Point', value: '62–65 °C' },
+        { label: 'Fragrance Load', value: 'Up to 6%' },
+        { label: 'Pack Sizes', value: '100g / 500g / 1kg' },
+        { label: 'Colour', value: 'Natural Yellow' },
+        { label: 'Scent', value: 'Natural Honey' },
       ],
       usage: `<h4>How to Use</h4>
         <p>Melt beeswax slowly at 80–85 °C using a double boiler. Beeswax thickens quickly so work fast. Pour into moulds or containers at 70 °C.</p>
@@ -136,11 +137,11 @@ const DATA = {
       badges: [],
       desc: 'High-quality refined paraffin wax for brilliant white candles with excellent colour and fragrance retention. The classic choice for pillars, votives, and container candles.',
       specs: [
-        { label: 'Type',          value: 'Refined Paraffin Wax' },
-        { label: 'Melt Point',    value: '52–56 °C' },
-        { label: 'Fragrance Load',value: 'Up to 12%' },
-        { label: 'Pack Sizes',    value: '500g / 1kg / 5kg' },
-        { label: 'Colour',        value: 'Crystal White' },
+        { label: 'Type', value: 'Refined Paraffin Wax' },
+        { label: 'Melt Point', value: '52–56 °C' },
+        { label: 'Fragrance Load', value: 'Up to 12%' },
+        { label: 'Pack Sizes', value: '500g / 1kg / 5kg' },
+        { label: 'Colour', value: 'Crystal White' },
       ],
       usage: `<h4>How to Use</h4>
         <p>Melt at 70–75 °C. Add additives (stearic acid) if desired, then fragrance at 65 °C. Pour at 60 °C into moulds or containers.</p>
@@ -163,11 +164,11 @@ const DATA = {
       badges: ['popular'],
       desc: 'A warm, creamy, comforting vanilla — the most loved fragrance in our collection. Excellent throw in both soy and paraffin wax. Works equally well in wax melts and diffusers.',
       specs: [
-        { label: 'Top Note',      value: 'Sweet Cream' },
-        { label: 'Middle Note',   value: 'Vanilla Bean' },
-        { label: 'Base Note',     value: 'Musk, Benzoin' },
-        { label: 'Usage Rate',    value: '6–10%' },
-        { label: 'Pack Sizes',    value: '30ml / 100ml / 500ml' },
+        { label: 'Top Note', value: 'Sweet Cream' },
+        { label: 'Middle Note', value: 'Vanilla Bean' },
+        { label: 'Base Note', value: 'Musk, Benzoin' },
+        { label: 'Usage Rate', value: '6–10%' },
+        { label: 'Pack Sizes', value: '30ml / 100ml / 500ml' },
         { label: 'Compatibility', value: 'Soy, Paraffin, Beeswax' },
       ],
       usage: `<h4>Blending Tips</h4>
@@ -192,11 +193,11 @@ const DATA = {
       badges: [],
       desc: 'A fresh, aromatic, true-to-nature lavender fragrance. Relaxing and versatile — perfect for bedroom candles, meditation spaces, and stress-relief products.',
       specs: [
-        { label: 'Top Note',      value: 'Fresh Lavender' },
-        { label: 'Middle Note',   value: 'Herbs, Floral' },
-        { label: 'Base Note',     value: 'Musk, Woods' },
-        { label: 'Usage Rate',    value: '6–10%' },
-        { label: 'Pack Sizes',    value: '30ml / 100ml / 500ml' },
+        { label: 'Top Note', value: 'Fresh Lavender' },
+        { label: 'Middle Note', value: 'Herbs, Floral' },
+        { label: 'Base Note', value: 'Musk, Woods' },
+        { label: 'Usage Rate', value: '6–10%' },
+        { label: 'Pack Sizes', value: '30ml / 100ml / 500ml' },
         { label: 'Compatibility', value: 'All Wax Types' },
       ],
       usage: `<h4>Blending Tips</h4>
@@ -220,11 +221,11 @@ const DATA = {
       badges: [],
       desc: 'A rich, romantic, true Bulgarian rose fragrance. Deeply floral with a classic quality — our top-selling fragrance for gifting candles.',
       specs: [
-        { label: 'Top Note',    value: 'Fresh Petals' },
+        { label: 'Top Note', value: 'Fresh Petals' },
         { label: 'Middle Note', value: 'Bulgarian Rose' },
-        { label: 'Base Note',   value: 'Musk, Powdery' },
-        { label: 'Usage Rate',  value: '6–8%' },
-        { label: 'Pack Sizes',  value: '30ml / 100ml / 500ml' },
+        { label: 'Base Note', value: 'Musk, Powdery' },
+        { label: 'Usage Rate', value: '6–8%' },
+        { label: 'Pack Sizes', value: '30ml / 100ml / 500ml' },
       ],
       usage: `<h4>Blending Tips</h4>
         <p>Rose fragrances can accelerate trace — add at the correct temperature and pour promptly.</p>
@@ -247,11 +248,11 @@ const DATA = {
       badges: [],
       desc: 'A deep, woody, meditative sandalwood with warm earthy base notes. A timeless unisex fragrance that grounds any room with a sense of calm.',
       specs: [
-        { label: 'Top Note',    value: 'Bergamot' },
+        { label: 'Top Note', value: 'Bergamot' },
         { label: 'Middle Note', value: 'Cedarwood' },
-        { label: 'Base Note',   value: 'Sandalwood, Amber' },
-        { label: 'Usage Rate',  value: '6–10%' },
-        { label: 'Pack Sizes',  value: '30ml / 100ml / 500ml' },
+        { label: 'Base Note', value: 'Sandalwood, Amber' },
+        { label: 'Usage Rate', value: '6–10%' },
+        { label: 'Pack Sizes', value: '30ml / 100ml / 500ml' },
       ],
       usage: `<h4>Blending Tips</h4>
         <p>Sandalwood is a rich base note — blend with lighter top notes for balance.</p>
@@ -274,11 +275,11 @@ const DATA = {
       badges: [],
       desc: 'A rich, freshly-brewed coffee fragrance with hints of dark chocolate and cream. Energising and comforting — perfect for kitchen and study candles.',
       specs: [
-        { label: 'Top Note',    value: 'Fresh Coffee' },
+        { label: 'Top Note', value: 'Fresh Coffee' },
         { label: 'Middle Note', value: 'Dark Chocolate' },
-        { label: 'Base Note',   value: 'Cream, Vanilla' },
-        { label: 'Usage Rate',  value: '6–10%' },
-        { label: 'Pack Sizes',  value: '30ml / 100ml / 500ml' },
+        { label: 'Base Note', value: 'Cream, Vanilla' },
+        { label: 'Usage Rate', value: '6–10%' },
+        { label: 'Pack Sizes', value: '30ml / 100ml / 500ml' },
       ],
       usage: `<h4>Blending Tips</h4>
         <p>Coffee fragrance has excellent throw in all wax types.</p>
@@ -300,10 +301,10 @@ const DATA = {
       badges: ['popular'],
       desc: '12 premium fruity fragrance oils in a curated gift set — strawberry, mango, citrus, peach, lychee, watermelon, kiwi, passion fruit, pineapple, blueberry, coconut, and cherry.',
       specs: [
-        { label: 'Includes',    value: '12 × 10ml bottles' },
-        { label: 'Scent Family',value: 'Fruity & Fresh' },
-        { label: 'Usage Rate',  value: '6–10% each' },
-        { label: 'Best For',    value: 'Gifting, Sampling' },
+        { label: 'Includes', value: '12 × 10ml bottles' },
+        { label: 'Scent Family', value: 'Fruity & Fresh' },
+        { label: 'Usage Rate', value: '6–10% each' },
+        { label: 'Best For', value: 'Gifting, Sampling' },
       ],
       usage: `<h4>Set Contents</h4>
         <p>Strawberry · Mango · Sweet Citrus · Peach Nectar · Lychee · Watermelon · Kiwi Breeze · Passion Fruit · Pineapple · Wild Blueberry · Tropical Coconut · Cherry Blossom</p>
@@ -328,10 +329,10 @@ const DATA = {
       desc: 'Food-grade silicon mould with intricate heart and rose petal details. Creates stunning Valentine-themed candles. Highly flexible for easy unmoulding.',
       specs: [
         { label: 'Cavity Size', value: '60 × 60 × 40mm' },
-        { label: 'Cavities',    value: '6 per sheet' },
-        { label: 'Material',    value: 'Food-Grade Silicon' },
-        { label: 'Max Temp',    value: '220 °C' },
-        { label: 'Style',       value: 'Heart with Rose Petals' },
+        { label: 'Cavities', value: '6 per sheet' },
+        { label: 'Material', value: 'Food-Grade Silicon' },
+        { label: 'Max Temp', value: '220 °C' },
+        { label: 'Style', value: 'Heart with Rose Petals' },
       ],
       usage: `<h4>Mould Care</h4>
         <p>Lightly spray mould release or wipe with vegetable oil before each use. Wash with warm soapy water after use.</p>
@@ -355,12 +356,12 @@ const DATA = {
       badges: ['popular'],
       desc: 'Everything you need to make your first candles at home — hand-curated by our experts. Includes soy wax, cotton wicks, fragrance oil (your choice), container, pouring jug, thermometer, and step-by-step guide.',
       specs: [
-        { label: 'Includes',   value: '8-item complete kit' },
-        { label: 'Wax',        value: '500g Soy WP565' },
-        { label: 'Wicks',      value: '10 × Pre-tabbed Cotton' },
-        { label: 'Fragrance',  value: '1 × 30ml (Choice of 6)' },
-        { label: 'Container',  value: '1 × Glass Jar (200ml)' },
-        { label: 'Tools',      value: 'Jug, Thermometer, Stirrer' },
+        { label: 'Includes', value: '8-item complete kit' },
+        { label: 'Wax', value: '500g Soy WP565' },
+        { label: 'Wicks', value: '10 × Pre-tabbed Cotton' },
+        { label: 'Fragrance', value: '1 × 30ml (Choice of 6)' },
+        { label: 'Container', value: '1 × Glass Jar (200ml)' },
+        { label: 'Tools', value: 'Jug, Thermometer, Stirrer' },
       ],
       usage: `<h4>Kit Contents</h4>
         <p>This kit has everything to make 2–3 medium candles. Follow the included step-by-step guide or watch our Instagram tutorials.</p>
@@ -423,10 +424,10 @@ const DATA = {
 
   /* ── TRUST ITEMS ──────────────────────────── */
   trustItems: [
-    { icon: '🚚', title: 'Fast Dispatch',    sub: 'Within 24 working hours' },
-    { icon: '✦',  title: 'Premium Quality', sub: 'Lab-tested raw materials' },
-    { icon: '📦', title: 'Secure Packaging',sub: 'Unboxing video required' },
-    { icon: '💬', title: 'WhatsApp Support',sub: 'Quick help anytime' },
+    { icon: '🚚', title: 'Fast Dispatch', sub: 'Within 24 working hours' },
+    { icon: '✦', title: 'Premium Quality', sub: 'Lab-tested raw materials' },
+    { icon: '📦', title: 'Secure Packaging', sub: 'Unboxing video required' },
+    { icon: '💬', title: 'WhatsApp Support', sub: 'Quick help anytime' },
   ],
 
   /* ── PROMO CODES ──────────────────────────── */
@@ -434,12 +435,12 @@ const DATA = {
     TIMTIM10: 10,
     ARITRI10: 10,
     CANDLE10: 10,
-    FIRST15:  15,
+    FIRST15: 15,
   },
 
   /* ── SHIPPING ─────────────────────────────── */
   freeShippingThreshold: 999,
-  shippingCost:          60,
+  shippingCost: 60,
 
   /* ── CONTACT ──────────────────────────────── */
   whatsappNumber: '919899131167',
@@ -450,17 +451,17 @@ const DATA = {
 /* ── HELPERS ──────────────────────────────────── */
 
 /** Return a product by ID */
-DATA.getProduct = function(id) {
+DATA.getProduct = function (id) {
   return DATA.products.find(p => p.id === id) || null;
 };
 
 /** Return products matching a category name */
-DATA.getByCategory = function(cat) {
+DATA.getByCategory = function (cat) {
   return DATA.products.filter(p => p.cat === cat);
 };
 
 /** Return related products for a given product ID */
-DATA.getRelated = function(id) {
+DATA.getRelated = function (id) {
   const product = DATA.getProduct(id);
   if (!product) return [];
   return (product.related || [])
@@ -469,10 +470,73 @@ DATA.getRelated = function(id) {
 };
 
 /** Return products to show on home (waxes + fragrances) */
-DATA.getHomeWaxes = function() {
+DATA.getHomeWaxes = function () {
   return DATA.getByCategory('Candle Waxes').slice(0, 4);
 };
 
-DATA.getHomeFragrances = function() {
+DATA.getHomeFragrances = function () {
   return DATA.getByCategory('Fragrance Oils').slice(0, 6);
+};
+
+/* ── FIREBASE INTEGRATION ─────────────────────── */
+
+/** Fetch products from Firestore */
+DATA.fetchProducts = async function () {
+  if (!window.FB || !window.FB.db) {
+    console.warn("Firebase not initialized. Falling back to legacy products data.");
+    DATA.products = DATA.legacyProducts;
+    return;
+  }
+
+  try {
+    const snapshot = await window.FB.db.collection('products').get();
+    if (snapshot.empty) {
+      console.log("No products in Firestore. Using local legacy products.");
+      DATA.products = DATA.legacyProducts;
+      return;
+    }
+
+    const fetched = [];
+    snapshot.forEach(doc => {
+      fetched.push({ _uid: doc.id, ...doc.data() });
+    });
+
+    // Convert string IDs if numeric used before, to maintain compatibility
+    fetched.forEach(p => {
+      // Legacy app relies on integer IDs for Router properties (`Router.go('product', { id: 1 })`)
+      // If we keep Firestore IDs as string, we need to adapt getters to == instead of === or cast.
+      if (!p.id) p.id = p._uid; // Use Firestore document ID as the product ID fallback
+    });
+
+    DATA.products = fetched;
+    console.log(`Successfully fetched ${fetched.length} products from Firebase.`);
+  } catch (error) {
+    console.error("Error fetching products from Firebase:", error);
+    // Fallback on error
+    DATA.products = DATA.legacyProducts;
+    throw error;
+  }
+};
+
+/**
+ * Migration helper function: run this ONCE from your browser console 
+ * to upload the legacy static products to your new Firestore database.
+ * Usage: DATA.seedFirestore() 
+ */
+DATA.seedFirestore = async function () {
+  if (!window.FB || !window.FB.db) {
+    console.error("Firebase not initialized.");
+    return;
+  }
+  let successCount = 0;
+  for (const item of DATA.legacyProducts) {
+    try {
+      // Create a document using the item's numeric ID as string for continuity
+      await window.FB.db.collection('products').doc(item.id.toString()).set(item);
+      successCount++;
+    } catch (e) {
+      console.error("Error writing document", e);
+    }
+  }
+  console.log(`Seeding complete: ${successCount}/${DATA.legacyProducts.length} added to Firestore`);
 };

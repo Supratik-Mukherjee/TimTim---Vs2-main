@@ -53,6 +53,9 @@
   <link rel="stylesheet" href="css/shop.css"/>
 </head>
 <body>
+<div id="app-loading" style="position:fixed;inset:0;background:var(--warm-white);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 0.6s;">
+  <h2 style="font-family:var(--font-serif);color:var(--charcoal);">Welcome to Timtim...</h2>
+</div>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="announcement" role="status" aria-live="polite"></div>
@@ -473,6 +476,13 @@
 <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">💬</a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- Firebase Compat Libraries -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<script src="js/firebase-init.js"></script>
 <script src="js/data.js"></script>
 <script src="js/state.js"></script>
 <script src="js/router.js"></script>

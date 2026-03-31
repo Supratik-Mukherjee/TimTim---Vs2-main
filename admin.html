@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timtim Admin Dashboard</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/admin.css">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-init.js"></script>
+</head>
+<body>
+
+  <!-- AUTHENTICATION VIEW -->
+  <div id="admin-auth">
+    <div class="auth-box">
+      <h2>Timtim Admin</h2>
+      <p style="color:var(--admin-border);margin-bottom:24px;color:#cbd5e1;font-size:14px;">Secure login required to access inventory</p>
+      <form id="auth-form" class="auth-form">
+        <input type="email" id="auth-email" class="auth-input" placeholder="Admin Email" required>
+        <input type="password" id="auth-password" class="auth-input" placeholder="Password" required>
+        <button type="submit" class="auth-btn" id="login-btn">Log In Session</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div id="admin-dashboard" style="display: none;">
+    <header class="admin-header">
+      <h1>Timtim Dashboard</h1>
+      <button id="logout-btn" class="logout-btn">Log Out</button>
+    </header>
+
+    <main class="admin-main">
+      <!-- Add Product Sidebar -->
+      <section class="admin-panel">
+        <h3>Add New Product</h3>
+        <form id="add-product-form" class="add-product-form">
+          <div class="form-group">
+            <label for="p-name">Product Title</label>
+            <input type="text" id="p-name" required placeholder="e.g. Soy Wax WP565">
+          </div>
+          
+          <div class="form-row" style="display:flex; gap:12px;">
+            <div class="form-group" style="flex:1;">
+              <label for="p-price">Price (₹)</label>
+              <input type="number" id="p-price" required placeholder="295" min="0">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label for="p-qty">Stock Qty</label>
+              <input type="number" id="p-qty" required placeholder="50" min="0">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="p-sku">SKU</label>
+            <input type="text" id="p-sku" required placeholder="WP565">
+          </div>
+
+          <div class="form-group">
+            <label for="p-cat">Category</label>
+            <select id="p-cat" required>
+              <option value="Candle Waxes">Candle Waxes</option>
+              <option value="Silicon Moulds">Silicon Moulds</option>
+              <option value="Fragrance Oils">Fragrance Oils</option>
+              <option value="Essential Tools">Essential Tools</option>
+              <option value="Containers">Containers</option>
+              <option value="Beginner Kits">Beginner Kits</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="p-desc">Description</label>
+            <textarea id="p-desc" required placeholder="Describe the product..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="p-image">Product Image</label>
+            <input type="file" id="p-image" accept="image/png, image/jpeg, image/webp" required style="border:none;padding:0;">
+          </div>
+
+          <button type="submit" id="add-btn" class="submit-btn">Upload Product</button>
+        </form>
+      </section>
+
+      <!-- Products Table -->
+      <section class="admin-panel" style="overflow-x:auto;">
+        <h3>Current Inventory</h3>
+        <table id="products-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>SKU & Cat</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-tbody">
+            <tr>
+              <td colspan="6" style="text-align:center;padding:30px;color:#94a3b8;">Loading inventory...</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast">Action successful</div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

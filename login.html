@@ -370,12 +370,12 @@
 
   // ── 🔥 REPLACE WITH YOUR FIREBASE CONFIG ──────────────────────
   const firebaseConfig = {
-    apiKey:            "YOUR_API_KEY",
-    authDomain:        "YOUR_PROJECT.firebaseapp.com",
-    projectId:         "YOUR_PROJECT_ID",
-    storageBucket:     "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId:             "YOUR_APP_ID"
+    apiKey: "AIzaSyD65l4ejf_78PsVTgssPZN4qSKtCHSh46s",
+    authDomain: "timtim-vs2-main-10726303-20a19.firebaseapp.com",
+    projectId: "timtim-vs2-main-10726303-20a19",
+    storageBucket: "timtim-vs2-main-10726303-20a19.firebasestorage.app",
+    messagingSenderId: "607783612543",
+    appId: "1:607783612543:web:96f8aeaf5e657c02468f4a"
   };
   // ──────────────────────────────────────────────────────────────
 
@@ -474,7 +474,12 @@
         setTimeout(() => { window.location.href = 'index.html'; }, 1000);
       } catch(e) {
         document.getElementById('pill-google').classList.remove('active');
-        if (e.code !== 'auth/popup-closed-by-user') showMsg('Google sign-in failed. Please try again.');
+        console.error("Google Sign-In Error:", e);
+        if (e.code !== 'auth/popup-closed-by-user') {
+          showMsg('Google sign-in failed. Check the console for details.');
+        } else {
+          clearMsg();
+        }
       }
     },
 

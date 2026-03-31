@@ -46,13 +46,13 @@ const HomePage = (() => {
     grid.innerHTML = DATA.getHomeFragrances().map(f => `
       <div
         class="frag-card reveal"
-        onclick="Router.go('product', { id: ${f.id} })"
+        onclick="Router.go('product', { id: '${f.id}' })"
         role="button"
         tabindex="0"
         aria-label="${UI.esc(f.shortName || f.name)}"
-        onkeydown="if(event.key==='Enter')Router.go('product',{id:${f.id}})"
+        onkeydown="if(event.key==='Enter')Router.go('product',{id:'${f.id}'})"
       >
-        <div class="frag-img ${UI.esc(f.bg)}">${UI.esc(f.emoji)}</div>
+        <div class="frag-img ${f.imageUrl ? '' : UI.esc(f.bg)}" style="${f.imageUrl ? `background-image:url('${UI.esc(f.imageUrl)}');background-size:cover;background-position:center;` : ''}">${f.imageUrl ? '' : UI.esc(f.emoji)}</div>
         <h4>${UI.esc(f.shortName || f.name)}</h4>
         <span class="frag-price">from ${UI.formatPrice(f.price)}</span>
       </div>

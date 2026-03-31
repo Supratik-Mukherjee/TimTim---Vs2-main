@@ -38,12 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
   UI.updateNav();
 
   /* ── BOOT HOME PAGE ─────────────────────── */
-  const hash = window.location.hash.replace('#', '');
-  if (hash && typeof Router !== 'undefined') {
-    // Basic hash to route mapping
-    Router.go(hash === 'shop' ? 'shop' : 'home');
-  } else {
+  DATA.fetchProducts().then(() => {
+    // Hide loading screen
+    const loading = document.getElementById('app-loading');
+    if (loading) {
+      loading.style.opacity = '0';
+      setTimeout(() => loading.remove(), 600);
+    }
+    const hash = window.location.hash.replace('#', '');
+    if (hash && typeof Router !== 'undefined') {
+      Router.go(hash === 'shop' ? 'shop' : 'home');
+    } else {
+      Router.go('home');
+    }
+  }).catch(err => {
+    console.error("Firebase fetch failed or not configured", err);
+    // Fallback to local load if Firebase fails
+    const loading = document.getElementById('app-loading');
+    if (loading) loading.style.opacity = '0';
     Router.go('home');
-  }
+  });
 
 });

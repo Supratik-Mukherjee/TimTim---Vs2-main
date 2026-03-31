@@ -128,27 +128,31 @@ const UI = (() => {
       ? `<div class="prod-badge ${product.badges[0]}">${esc(product.badges[0])}</div>`
       : '';
 
+    const bgClass = product.imageUrl ? '' : esc(product.bg);
+    const bgInline = product.imageUrl ? `style="background-image:url('${esc(product.imageUrl)}');background-size:cover;background-position:center;"` : '';
+    const innerHTML = product.imageUrl ? '' : `<div class="prod-thumb-inner" aria-hidden="true">${esc(product.emoji)}</div>`;
+
     return `
       <article
         class="prod-card reveal"
-        onclick="Router.go('product', { id: ${product.id} })"
+        onclick="Router.go('product', { id: '${product.id}' })"
         aria-label="${esc(product.shortName || product.name)}"
         role="button"
         tabindex="0"
-        onkeydown="if(event.key==='Enter')Router.go('product',{id:${product.id}})"
+        onkeydown="if(event.key==='Enter')Router.go('product',{id:'${product.id}'})"
       >
-        <div class="prod-thumb ${esc(product.bg)}">
+        <div class="prod-thumb ${bgClass}" ${bgInline}>
           ${badgeHTML}
-          <div class="prod-thumb-inner" aria-hidden="true">${esc(product.emoji)}</div>
+          ${innerHTML}
           <div class="prod-actions" onclick="event.stopPropagation()">
             <button
               class="atc-btn"
-              onclick="CartPage.addFromCard(${product.id}, this)"
+              onclick="CartPage.addFromCard('${product.id}', this)"
               aria-label="Add ${esc(product.shortName || product.name)} to cart"
             >Add to Cart</button>
             <button
               class="wish-btn${wished ? ' on' : ''}"
-              onclick="ProductPage.toggleWishFromCard(${product.id}, this)"
+              onclick="ProductPage.toggleWishFromCard('${product.id}', this)"
               aria-label="${wished ? 'Remove from' : 'Add to'} wishlist"
             >${wished ? '♥' : '♡'}</button>
           </div>
