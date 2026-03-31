@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── REGISTER PAGES ─────────────────────── */
   Router.register('home',     { onEnter: HomePage.onEnter });
+  Router.register('shop',     { onEnter: ShopPage.onEnter });
   Router.register('product',  { onEnter: ProductPage.onEnter });
   Router.register('cart',     { onEnter: CartPage.onEnter });
   Router.register('checkout', { onEnter: CheckoutPage.onEnter });
@@ -37,6 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
   UI.updateNav();
 
   /* ── BOOT HOME PAGE ─────────────────────── */
-  Router.go('home');
+  const hash = window.location.hash.replace('#', '');
+  if (hash && typeof Router !== 'undefined') {
+    // Basic hash to route mapping
+    Router.go(hash === 'shop' ? 'shop' : 'home');
+  } else {
+    Router.go('home');
+  }
 
 });

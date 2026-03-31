@@ -1,0 +1,220 @@
+<!-- ════════════════════════════════════════════
+     pages/checkout.html — Checkout + Success
+     Timtim by Aritri
+════════════════════════════════════════════ -->
+
+<!-- ══ CHECKOUT PAGE ══════════════════════════ -->
+<div id="checkout-content">
+
+  <div class="page-header">
+    <h1>Checkout</h1>
+    <p>🔒 Secure payment · All information is encrypted</p>
+  </div>
+
+  <div class="checkout-layout">
+
+    <!-- LEFT: Form -->
+    <div class="checkout-form" novalidate>
+
+      <!-- Contact Information -->
+      <div class="cf-section">
+        <h3>Contact Information</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cf-first">First Name *</label>
+            <input class="form-input" id="cf-first" type="text"
+              placeholder="Aritri" autocomplete="given-name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-last">Last Name *</label>
+            <input class="form-input" id="cf-last" type="text"
+              placeholder="Sharma" autocomplete="family-name"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-email">Email Address *</label>
+          <input class="form-input" id="cf-email" type="email"
+            placeholder="you@email.com" autocomplete="email"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-phone">Phone Number *</label>
+          <input class="form-input" id="cf-phone" type="tel"
+            placeholder="+91 98765 43210" autocomplete="tel"/>
+        </div>
+      </div>
+
+      <!-- Shipping Address -->
+      <div class="cf-section">
+        <h3>Shipping Address</h3>
+        <div class="form-group">
+          <label class="form-label" for="cf-addr1">Address Line 1 *</label>
+          <input class="form-input" id="cf-addr1" type="text"
+            placeholder="House / Flat / Building No." autocomplete="address-line1"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-addr2">Address Line 2</label>
+          <input class="form-input" id="cf-addr2" type="text"
+            placeholder="Street / Area / Locality" autocomplete="address-line2"/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cf-city">City *</label>
+            <input class="form-input" id="cf-city" type="text"
+              placeholder="Mumbai" autocomplete="address-level2"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-pin">Pincode *</label>
+            <input class="form-input" id="cf-pin" type="text"
+              placeholder="400001" autocomplete="postal-code" maxlength="6"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-state">State *</label>
+          <select class="form-input form-select" id="cf-state" autocomplete="address-level1">
+            <option value="">Select State</option>
+            <option>Andhra Pradesh</option>
+            <option>Assam</option>
+            <option>Bihar</option>
+            <option>Delhi</option>
+            <option>Goa</option>
+            <option>Gujarat</option>
+            <option>Haryana</option>
+            <option>Himachal Pradesh</option>
+            <option>Jharkhand</option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>Madhya Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Manipur</option>
+            <option>Odisha</option>
+            <option>Punjab</option>
+            <option>Rajasthan</option>
+            <option>Tamil Nadu</option>
+            <option>Telangana</option>
+            <option>Uttar Pradesh</option>
+            <option>Uttarakhand</option>
+            <option>West Bengal</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="cf-section">
+        <h3>Payment Method</h3>
+        <div class="payment-methods" role="radiogroup" aria-label="Payment method">
+
+          <!-- Card -->
+          <label class="pay-option selected" id="pay-opt-card"
+            onclick="CheckoutPage.selectPayment('card')">
+            <input type="radio" name="pay" value="card" checked
+              aria-label="Pay by credit or debit card"/>
+            <div class="pay-label-group">
+              <p class="pay-title">Credit / Debit Card</p>
+              <p class="pay-sub">Visa, Mastercard, RuPay</p>
+            </div>
+            <div class="pay-icons">
+              <span class="pay-icon">VISA</span>
+              <span class="pay-icon">MC</span>
+              <span class="pay-icon">RUPAY</span>
+            </div>
+          </label>
+
+          <!-- Card fields -->
+          <div class="pay-extra-fields show" id="card-fields">
+            <div class="form-group">
+              <label class="form-label" for="cf-card-num">Card Number</label>
+              <input class="form-input" id="cf-card-num" type="text"
+                placeholder="4242 4242 4242 4242" maxlength="19"
+                autocomplete="cc-number" inputmode="numeric"/>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cf-expiry">Expiry (MM / YY)</label>
+                <input class="form-input" id="cf-expiry" type="text"
+                  placeholder="08 / 27" maxlength="7"
+                  autocomplete="cc-exp"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-cvv">CVV</label>
+                <input class="form-input" id="cf-cvv" type="password"
+                  placeholder="•••" maxlength="4"
+                  autocomplete="cc-csc"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- UPI -->
+          <label class="pay-option" id="pay-opt-upi"
+            onclick="CheckoutPage.selectPayment('upi')">
+            <input type="radio" name="pay" value="upi" aria-label="Pay via UPI"/>
+            <div class="pay-label-group">
+              <p class="pay-title">UPI</p>
+              <p class="pay-sub">GPay, PhonePe, Paytm, BHIM</p>
+            </div>
+            <div class="pay-icons"><span class="pay-icon">UPI</span></div>
+          </label>
+
+          <!-- UPI field -->
+          <div class="pay-extra-fields" id="upi-field">
+            <div class="form-group">
+              <label class="form-label" for="cf-upi">UPI ID</label>
+              <input class="form-input" id="cf-upi" type="text"
+                placeholder="yourname@upi" autocomplete="off"/>
+            </div>
+          </div>
+
+          <!-- COD -->
+          <label class="pay-option" id="pay-opt-cod"
+            onclick="CheckoutPage.selectPayment('cod')">
+            <input type="radio" name="pay" value="cod" aria-label="Cash on delivery"/>
+            <div class="pay-label-group">
+              <p class="pay-title">Cash on Delivery</p>
+              <p class="pay-sub">Pay when your order arrives</p>
+            </div>
+            <div class="pay-icons"><span class="pay-icon">COD</span></div>
+          </label>
+
+          <!-- WhatsApp -->
+          <label class="pay-option" id="pay-opt-wa"
+            onclick="CheckoutPage.selectPayment('wa')">
+            <input type="radio" name="pay" value="wa"
+              aria-label="Order via WhatsApp"/>
+            <div class="pay-label-group">
+              <p class="pay-title">Order via WhatsApp</p>
+              <p class="pay-sub">Send order details directly to us</p>
+            </div>
+            <div class="pay-icons">
+              <span class="pay-icon wa">WA</span>
+            </div>
+          </label>
+
+        </div><!-- /payment-methods -->
+      </div><!-- /cf-section -->
+
+      <!-- Place Order -->
+      <button class="place-order-btn" onclick="CheckoutPage.placeOrder()">
+        Place Order →
+      </button>
+
+    </div><!-- /checkout-form -->
+
+    <!-- RIGHT: Summary -->
+    <aside class="checkout-summary" aria-label="Order summary">
+      <div class="cs-box">
+        <p class="cs-title">Order Summary</p>
+        <div id="cs-items" role="list"></div>
+        <div class="cs-totals">
+          <div class="cs-row"><span>Subtotal</span><span id="cs-sub">₹0</span></div>
+          <div class="cs-row"><span>Shipping</span><span id="cs-ship">—</span></div>
+          <div class="cs-row grand"><span>Total</span><span id="cs-total">₹0</span></div>
+        </div>
+        <p class="cs-shipping-note" id="cs-shipping-note"></p>
+      </div>
+      <div class="cs-security-note">
+        🔒 <strong>Secure Checkout.</strong> Your payment information is encrypted
+        and never stored on our servers.
+      </div>
+    </aside>
+
+  </div><!-- /checkout-layout -->
+</div><!-- /checkout-content -->

@@ -50,6 +50,7 @@
   <link rel="stylesheet" href="css/cart.css"/>
   <link rel="stylesheet" href="css/checkout.css"/>
   <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/shop.css"/>
 </head>
 <body>
 
@@ -71,8 +72,8 @@
         <h1 class="hero-h1">Craft candles<br>that <em>illuminate</em><br>the soul</h1>
         <p class="hero-sub">Premium quality waxes, fragrances, moulds &amp; tools for the passionate candle maker. Everything you need to pour your first — or finest — candle.</p>
         <div class="hero-btns">
-          <button class="btn-dark" onclick="Router.scrollToSection('categories')">Shop Now</button>
-          <button class="btn-outline" onclick="Router.scrollToSection('kits')">Beginner Kits</button>
+          <button class="btn-dark" onclick="Router.go('shop')">Shop Now</button>
+          <button class="btn-outline" onclick="Router.go('shop', {cat: 'Beginner Kits'})">Beginner Kits</button>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
@@ -87,7 +88,7 @@
     <section class="section section-white" id="categories" aria-labelledby="cat-heading">
       <div class="sec-head reveal">
         <div><p class="sec-label">Explore</p><h2 class="sec-title" id="cat-heading">Shop by <em>Category</em></h2></div>
-        <button class="view-all-btn" onclick="Router.scrollToSection('raw-material')">View All →</button>
+        <button class="view-all-btn" onclick="Router.go('shop')">View All →</button>
       </div>
       <div class="cat-grid" id="cat-grid"></div>
     </section>
@@ -95,7 +96,7 @@
     <section class="section section-cream" id="raw-material" aria-labelledby="wax-heading">
       <div class="sec-head reveal">
         <div><p class="sec-label">Best Sellers</p><h2 class="sec-title" id="wax-heading">Candle <em>Waxes</em></h2></div>
-        <button class="view-all-btn">View All →</button>
+        <button class="view-all-btn" onclick="Router.go('shop', {cat: 'Candle Waxes'})">View All →</button>
       </div>
       <div class="prod-grid" id="wax-grid"></div>
     </section>
@@ -105,7 +106,7 @@
         <p class="promo-eyebrow">❤ Valentine's Special</p>
         <h2>30% Off on Heart &amp; Love Moulds</h2>
         <p>Create heartfelt gifts with our exclusive Valentine collection — teddy moulds, heart roses, and romantic sets crafted with love.</p>
-        <button class="btn-cream" onclick="Router.scrollToSection('raw-material')">Shop the Collection</button>
+        <button class="btn-cream" onclick="Router.go('shop', {cat: 'Silicon Moulds'})">Shop the Collection</button>
       </div>
       <div class="promo-half charcoal reveal" id="kits">
         <p class="promo-eyebrow">★ Just Starting Out?</p>
@@ -118,7 +119,7 @@
     <section class="section section-gray" id="fragrances" aria-labelledby="frag-heading">
       <div class="sec-head reveal">
         <div><p class="sec-label">Scents</p><h2 class="sec-title" id="frag-heading">Fragrance <em>Oils</em></h2></div>
-        <button class="view-all-btn">View All →</button>
+        <button class="view-all-btn" onclick="Router.go('shop', {cat: 'Fragrance Oils'})">View All →</button>
       </div>
       <div class="frag-grid" id="frag-grid"></div>
     </section>
@@ -147,10 +148,10 @@
         <div class="foot-col">
           <h5>Shop</h5>
           <ul>
-            <li><button onclick="Router.scrollToSection('raw-material')">Candle Waxes</button></li>
-            <li><button onclick="Router.scrollToSection('moulds')">Silicon Moulds</button></li>
-            <li><button onclick="Router.scrollToSection('fragrances')">Fragrances</button></li>
-            <li><button onclick="Router.scrollToSection('kits')">Beginner Kits</button></li>
+            <li><button onclick="Router.go('shop', {cat: 'Candle Waxes'})">Candle Waxes</button></li>
+            <li><button onclick="Router.go('shop', {cat: 'Silicon Moulds'})">Silicon Moulds</button></li>
+            <li><button onclick="Router.go('shop', {cat: 'Fragrance Oils'})">Fragrances</button></li>
+            <li><button onclick="Router.go('shop', {cat: 'Beginner Kits'})">Beginner Kits</button></li>
           </ul>
         </div>
         <div class="foot-col">
@@ -188,6 +189,18 @@
       </div>
     </footer>
   </div><!-- /#page-home -->
+
+  <!-- ── SHOP ───────────────────────────────── -->
+  <div id="page-shop" class="page" aria-label="Shop page">
+    <div class="page-header" style="text-align:center; padding: 60px 20px 20px;">
+      <h1 id="shop-title">Shop All</h1>
+      <p style="margin-top:10px; color:var(--warm-gray);">Premium quality waxes, fragrances, moulds & tools.</p>
+    </div>
+    <div class="shop-filter-bar" id="shop-filter-bar">
+      <!-- Filters injected by js -->
+    </div>
+    <div id="shop-grid"></div>
+  </div><!-- /#page-shop -->
 
   <!-- ── PRODUCT DETAIL ─────────────────────── -->
   <div id="page-product" class="page" aria-label="Product detail">
@@ -465,6 +478,7 @@
 <script src="js/router.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/home.js"></script>
+<script src="js/shop.js"></script>
 <script src="js/product.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/checkout.js"></script>

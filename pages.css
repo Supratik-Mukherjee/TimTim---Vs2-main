@@ -1,0 +1,83 @@
+/* ── MULTI-PAGE NAV OVERRIDES ─────────────────────────────────── */
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--charcoal);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--amber);
+}
+
+.nav-cart-btn,
+.nav-icon-btn {
+  text-decoration: none;
+}
+
+/* ── PAGE HERO SHARED ─────────────────────────────────────────── */
+.page-hero {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 100px 40px 60px;
+  text-align: center;
+}
+
+.page-hero .eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.page-hero p {
+  font-size: 1rem;
+  color: rgba(249,244,236,0.7);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── SHARED SECTION WRAPPER ───────────────────────────────────── */
+.content-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+@media (max-width: 600px) {
+  .content-wrap { padding: 48px 20px; }
+  .page-hero { padding: 90px 20px 48px; }
+}

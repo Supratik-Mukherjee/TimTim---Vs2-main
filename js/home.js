@@ -16,11 +16,11 @@ const HomePage = (() => {
       <div
         class="cat-card reveal${cat.large ? ' cat-large' : ''}"
         style="background:${cat.bg}"
-        onclick="Router.scrollToSection('${UI.esc(cat.scrollTo)}')"
+        onclick="Router.go('shop', {cat: '${UI.esc(cat.label)}'})"
         role="button"
         tabindex="0"
         aria-label="Browse ${UI.esc(cat.label)}"
-        onkeydown="if(event.key==='Enter')Router.scrollToSection('${UI.esc(cat.scrollTo)}')"
+        onkeydown="if(event.key==='Enter')Router.go('shop', {cat: '${UI.esc(cat.label)}'})"
       >
         <div class="cat-inner">${UI.esc(cat.emoji)}</div>
         <div class="cat-overlay">

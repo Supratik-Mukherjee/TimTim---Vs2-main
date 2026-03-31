@@ -1,0 +1,80 @@
+<!-- ════════════════════════════════════════════
+     pages/cart.html — Shopping cart page
+     Timtim by Aritri
+════════════════════════════════════════════ -->
+
+<div class="page-header">
+  <h1>Your Cart</h1>
+  <p id="cart-subtitle">Loading…</p>
+</div>
+
+<div class="cart-layout">
+
+  <!-- ITEMS COLUMN -->
+  <div id="cart-items-col" aria-live="polite" aria-label="Cart items"></div>
+
+  <!-- ORDER SUMMARY -->
+  <aside class="order-summary" aria-label="Order summary">
+    <h2 class="os-title">Order Summary</h2>
+
+    <div class="os-row">
+      <span>Subtotal</span>
+      <span id="os-subtotal">₹0</span>
+    </div>
+    <div class="os-row">
+      <span>Shipping</span>
+      <span id="os-shipping">—</span>
+    </div>
+    <div class="os-row">
+      <span>Discount</span>
+      <span id="os-discount">₹0</span>
+    </div>
+    <div class="os-row total">
+      <span>Total</span>
+      <span id="os-total">₹0</span>
+    </div>
+
+    <div class="os-divider"></div>
+
+    <!-- Promo code -->
+    <div class="coupon-row">
+      <label for="coupon-input" class="sr-only">Promo code</label>
+      <input
+        class="coupon-input"
+        id="coupon-input"
+        type="text"
+        placeholder="Promo code"
+        aria-label="Enter promo code"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="coupon-apply-btn" onclick="CartPage.applyCoupon()">Apply</button>
+    </div>
+    <p style="font-size:11px;color:var(--warm-gray);margin-bottom:16px">
+      Try: <code style="font-size:11px;background:var(--light-gray);padding:2px 6px">TIMTIM10</code>
+    </p>
+
+    <!-- Checkout CTA -->
+    <button
+      class="checkout-cta-btn"
+      id="checkout-cta-btn"
+      onclick="Router.go('checkout')"
+      disabled
+    >Proceed to Checkout →</button>
+
+    <button class="continue-btn" onclick="Router.go('home')">← Continue Shopping</button>
+
+    <!-- Shipping note -->
+    <p id="os-shipping-note"
+       style="font-size:11px;text-align:center;margin-top:14px;color:var(--warm-gray)"></p>
+
+    <!-- Trust indicators -->
+    <div class="os-trust" aria-label="Security badges">
+      <span>🔒 Secure &amp; encrypted checkout</span>
+      <span>📦 Free shipping on orders ≥ ₹999</span>
+      <span>↩ Easy 7-day returns</span>
+    </div>
+
+  </aside>
+
+</div>

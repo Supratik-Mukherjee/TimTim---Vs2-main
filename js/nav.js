@@ -22,7 +22,7 @@ const Nav = (() => {
           Timtim <span>by</span> Aritri
         </a>
         <ul class="nav-links" aria-label="Site sections">
-          <li><a href="index.html" ${page==='index.html'?'class="active"':''}>Shop</a></li>
+          <li><a href="index.html#shop" onclick="if(typeof Router!=='undefined'){event.preventDefault();Router.go('shop');}" ${page==='index.html'?'class="active"':''}>Shop</a></li>
           <li><a href="about.html" ${page==='about.html'?'class="active"':''}>About</a></li>
           <li><a href="contact.html" ${page==='contact.html'?'class="active"':''}>Contact</a></li>
         </ul>
@@ -49,7 +49,7 @@ const Nav = (() => {
     const mob = document.getElementById('mobile-nav');
     if (mob) {
       mob.innerHTML = `
-        <a class="mobile-nav-link" href="index.html">Shop All</a>
+        <a class="mobile-nav-link" href="index.html#shop" onclick="if(typeof Router!=='undefined'){event.preventDefault();Router.go('shop');}">Shop All</a>
         <a class="mobile-nav-link" href="about.html">About Us</a>
         <a class="mobile-nav-link" href="contact.html">Contact</a>
         <a class="mobile-nav-link" href="login.html">👤 My Account</a>
