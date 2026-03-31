@@ -14,9 +14,7 @@ export default function Products() {
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, 'products'), (snap) => {
-      if (!snap.empty) {
-        setCloudProducts(snap.docs.map(d => ({ id: d.id, ...d.data() })));
-      }
+      setCloudProducts(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     });
     return () => unsub();
   }, []);
