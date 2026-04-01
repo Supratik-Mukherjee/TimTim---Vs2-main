@@ -44,7 +44,11 @@ export default function Products() {
   
   const productsToDisplay = currentCat === 'all' 
     ? cloudProducts 
-    : cloudProducts.filter(p => p.cat === currentCat);
+    : cloudProducts.filter(p => {
+        // Robust matching for Fragrances/Fragrance Oils
+        if (currentCat.includes('Fragrance') && (p.cat || '').includes('Fragrance')) return true;
+        return p.cat === currentCat;
+      });
 
   return (
     <div id="page-shop" className="page" aria-label="Shop page">

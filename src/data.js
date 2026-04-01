@@ -27,7 +27,7 @@ export const DATA = {
       scrollTo: 'moulds',
     },
     {
-      label: 'Fragrances',
+      label: 'Fragrance Oils',
       sub: 'Floral · Fruity · Woody',
       emoji: '🌸',
       bg: 'linear-gradient(135deg,#e8d8d8,#c8a8a8)',
@@ -72,14 +72,14 @@ export const DATA = {
     FIRST15: 15,
   },
 
-  /* ── SHIPPING ─────────────────────────────── */
-  freeShippingThreshold: 999,
-  shippingCost: 60,
+  /* ── SHIPPING (Self-calculated via WhatsApp) ── */
+  freeShippingThreshold: 0,
+  shippingCost: 0,
 
   /* ── CONTACT ──────────────────────────────── */
-  whatsappNumber: '919899131167',
-  email: 'support@timtimbyaritri.com',
-  instagram: 'https://www.instagram.com/candle_rawmaterial',
+  whatsappNumber: '917044973552',
+  email: 'timtimbusiness.in@gmail.com',
+  instagram: 'https://www.instagram.com/timtim_by_aritri',
 };
 
 /* ── HELPERS ──────────────────────────────────── */

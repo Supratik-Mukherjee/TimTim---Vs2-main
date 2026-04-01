@@ -1,4 +1,5 @@
 import React from 'react';
+import { DATA } from '../data';
 
 export default function Contact() {
   return (
@@ -12,10 +13,10 @@ export default function Contact() {
         <a href="mailto:support@timtimbyaritri.com" className="btn-outline" style={{ display: 'inline-block', width: '250px' }}>
           📧 Email Support
         </a>
-        <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" className="btn-dark" style={{ display: 'inline-block', width: '250px' }}>
+        <a href={`https://wa.me/${DATA.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="btn-dark" style={{ display: 'inline-block', width: '250px' }}>
           💬 WhatsApp Us
         </a>
-        <a href="https://instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ display: 'inline-block', width: '250px' }}>
+        <a href={DATA.instagram} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ display: 'inline-block', width: '250px' }}>
           📷 Instagram
         </a>
       </div>

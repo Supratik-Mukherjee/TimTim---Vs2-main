@@ -9,16 +9,29 @@ body {
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
+  background: linear-gradient(135deg, #1C1A18 0%, #2a1a10 50%, #1C1A18 100%);
+  position: relative;
+}
+
+.auth-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(196,136,58,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(196,136,58,0.08) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .auth-card {
   background: white;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: none;
+  border-radius: 8px;
   padding: 48px 44px;
   width: 100%;
   max-width: 440px;
-  box-shadow: 0 4px 40px rgba(28, 26, 24, 0.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 1;
 }
 
 .auth-logo {
@@ -292,18 +305,20 @@ body {
 
 .logout-btn {
   padding: 11px 28px;
-  border: 1px solid var(--border);
-  background: none;
+  border: 1px solid var(--sage);
+  background: var(--sage);
+  color: white;
   border-radius: 3px;
   font-size: 0.82rem;
-  color: var(--warm-gray);
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .logout-btn:hover {
-  border-color: #EF4444;
-  color: #EF4444;
+  background: #7A9677; /* Slightly darker sage */
+  border-color: #7A9677;
+  transform: translateY(-1px);
 }
 
 /* hidden sections */

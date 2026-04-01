@@ -50,6 +50,10 @@
   padding: 0;
   line-height: 1;
   transition: opacity var(--t-fast);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 .nav-logo:hover { opacity: .75; }
 .nav-logo span  { color: var(--amber); }

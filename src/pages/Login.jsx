@@ -119,7 +119,10 @@ export default function Login() {
   return (
     <div className="auth-wrap">
       <div className="auth-card">
-        <div className="auth-logo">🕯️ Timtim <span>by Aritri</span></div>
+        <div className="auth-logo">
+          <img src="/logo.png" alt="Timtim by Aritri" style={{ height: '72px', borderRadius: '50%', marginBottom: '8px', display: 'block', margin: '0 auto 8px' }} />
+          Timtim <span>by Aritri</span>
+        </div>
 
         {currentUser ? (
           <div className="logged-in-box">

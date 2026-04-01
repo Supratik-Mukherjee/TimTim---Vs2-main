@@ -89,21 +89,21 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-.trust-cell {
+.trust-item {
   padding: 26px 28px;
   border-right: 1px solid rgba(255,255,255,.07);
   display: flex; align-items: center; gap: 14px;
 }
-.trust-cell:last-child { border-right: none; }
+.trust-item:last-child { border-right: none; }
 
 .trust-ico { font-size: 20px; flex-shrink: 0; }
 
-.trust-cell h4 {
+.trust-item h4 {
   font-size: 11px; letter-spacing: 1px;
   text-transform: uppercase; color: var(--amber-light);
   font-weight: 500; margin-bottom: 3px;
 }
-.trust-cell p { font-size: 11px; color: rgba(255,255,255,.4); font-weight: 300; }
+.trust-item p { font-size: 11px; color: rgba(255,255,255,.55); font-weight: 300; }
 
 /* ── CATEGORIES ─────────────────────────────── */
 .cat-grid {

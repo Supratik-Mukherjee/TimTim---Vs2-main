@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { DATA } from '../data';
 
 export default function Layout() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -33,15 +34,17 @@ export default function Layout() {
       <a className="skip-link" href="#main-content">Skip to main content</a>
       
       <div className="announcement" role="status" aria-live="polite">
-        ✦ Free shipping on orders above ₹999 &nbsp;·&nbsp; 24hr dispatch &nbsp;·&nbsp; Pan India delivery ✦
+        ✦ Shipping based on location — Final bill provided via WhatsApp &nbsp;·&nbsp; 24hr dispatch &nbsp;·&nbsp; Pan India delivery ✦
       </div>
 
       <nav className="site-nav" role="navigation" aria-label="Main navigation">
         <div className="nav-inner">
           <Link className="nav-logo" to="/" aria-label="Timtim by Aritri — Go to homepage">
+            <img src="/logo.png" alt="Timtim" style={{ height: '34px', borderRadius: '50%' }} />
             Timtim <span>by</span> Aritri
           </Link>
           <ul className="nav-links" aria-label="Site sections">
+            <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
             <li><Link to="/products" className={location.pathname === '/products' ? 'active' : ''}>Shop</Link></li>
             <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About</Link></li>
             <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
@@ -71,6 +74,7 @@ export default function Layout() {
       </nav>
 
       <div className={`mobile-nav ${mobileNavOpen ? 'open' : ''}`} id="mobile-nav" role="dialog" aria-label="Mobile navigation menu">
+        <Link className="mobile-nav-link" to="/">Home</Link>
         <Link className="mobile-nav-link" to="/products">Shop All</Link>
         <Link className="mobile-nav-link" to="/about">About Us</Link>
         <Link className="mobile-nav-link" to="/contact">Contact</Link>
@@ -82,17 +86,18 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">💬</a>
+      <a href={`https://wa.me/${DATA.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">💬</a>
       <div className="toast" id="toast" role="status" aria-live="polite"></div>
 
       <footer className="site-footer" role="contentinfo">
         <div className="foot-grid">
           <div className="foot-brand">
+            <img src="/logo.png" alt="Timtim by Aritri" style={{ height: '50px', borderRadius: '50%', marginBottom: '12px', display: 'block' }} />
             <Link className="foot-logo" to="/" aria-label="Home">Timtim <span>by</span> Aritri</Link>
             <p>India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers &amp; beginner kits. Dispatch within 24 hours. Pan India delivery.</p>
             <div className="socials">
-              <a href="https://www.instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer" className="soc" aria-label="Instagram">📷</a>
-              <a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer" className="soc" aria-label="WhatsApp">💬</a>
+              <a href={DATA.instagram} target="_blank" rel="noopener noreferrer" className="soc" aria-label="Instagram">📷</a>
+              <a href={`https://wa.me/${DATA.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="soc" aria-label="WhatsApp">💬</a>
             </div>
           </div>
           <div className="foot-col">
@@ -117,9 +122,9 @@ export default function Layout() {
           <div className="foot-col">
             <h5>Contact</h5>
             <ul>
-              <li><a href="https://wa.me/919899131167" target="_blank" rel="noopener noreferrer">📞 WhatsApp Us</a></li>
-              <li><a href="mailto:support@timtimbyaritri.com">📧 Email Support</a></li>
-              <li><a href="https://instagram.com/candle_rawmaterial" target="_blank" rel="noopener noreferrer">📷 @candle_rawmaterial</a></li>
+              <li><a href={`https://wa.me/${DATA.whatsappNumber}`} target="_blank" rel="noopener noreferrer">📞 WhatsApp Us</a></li>
+              <li><a href={`mailto:${DATA.email}`}>📧 Email Support</a></li>
+              <li><a href={DATA.instagram} target="_blank" rel="noopener noreferrer">📷 @candle_rawmaterial</a></li>
             </ul>
             <br />
             <h5>Dispatch</h5>

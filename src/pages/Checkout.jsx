@@ -49,9 +49,9 @@ export default function Checkout() {
   };
 
   const subtotal = items.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
-  const shippingCost = subtotal >= DATA.freeShippingThreshold ? 0 : DATA.shippingCost;
+  const shippingCost = 0; // Handled via WhatsApp now
   const discountAmount = (subtotal * discountPct) / 100;
-  const total = Math.max(0, subtotal + shippingCost - discountAmount);
+  const total = Math.max(0, subtotal - discountAmount);
   const formatPrice = (p) => `₹${Math.round(p)}`;
 
   const generateOrderNumber = () => {
@@ -90,13 +90,14 @@ export default function Checkout() {
     if (discountAmount > 0) {
       msg += `Discount (${couponCode} ${discountPct}%): -₹${Math.round(discountAmount)}\n`;
     }
-    msg += `\n💰 *TOTAL: ₹${Math.round(total)}*\n\n`;
+    msg += `\n💰 *SUBTOTAL: ₹${Math.round(total)}*\n`;
+    msg += `* (Final bill including shipping will be provided here shortly) *\n\n`;
 
     if (form.notes) {
       msg += `📝 *Notes:* ${form.notes}\n\n`;
     }
 
-    msg += `Payment: Cash on Delivery / UPI\n`;
+    msg += `Payment: UPI / Bank Transfer\n`;
     msg += `━━━━━━━━━━━━━━━━━━━━`;
 
     return msg;
@@ -294,8 +295,8 @@ export default function Checkout() {
               <div className="pay-option selected">
                 <input type="radio" name="payment" id="pay-wa" defaultChecked readOnly />
                 <div className="pay-label-group">
-                  <p className="pay-title">WhatsApp Order</p>
-                  <p className="pay-sub">Order via WhatsApp — pay COD or via UPI after confirmation</p>
+                  <p className="pay-title">WhatsApp Order & Billing</p>
+                  <p className="pay-sub">Final bill including shipping will be shared via WhatsApp after location check</p>
                 </div>
                 <div className="pay-icons">
                   <span className="pay-icon wa">💬 WA</span>
@@ -303,8 +304,7 @@ export default function Checkout() {
               </div>
             </div>
             <p style={{ fontSize: '12px', color: 'var(--warm-gray)', marginTop: '14px', lineHeight: 1.7 }}>
-              Your order will be sent to our WhatsApp. We'll confirm availability and share payment details (UPI / bank transfer). 
-              Cash on Delivery is also available.
+              Your order will be sent to our WhatsApp. We'll check your location/weight, calculate shipping, and share the final bill with payment details (UPI / bank transfer). 
             </p>
           </div>
 
@@ -357,7 +357,7 @@ export default function Checkout() {
               </div>
               <div className="cs-row">
                 <span>Shipping</span>
-                <span>{shippingCost === 0 ? 'Free 🎉' : formatPrice(shippingCost)}</span>
+                <span>Calculated via WA</span>
               </div>
               {discountAmount > 0 && (
                 <div className="cs-row" style={{ color: 'var(--sage)' }}>
@@ -366,13 +366,13 @@ export default function Checkout() {
                 </div>
               )}
               <div className="cs-row grand">
-                <span>Total</span>
+                <span>Subtotal</span>
                 <span>{formatPrice(total)}</span>
               </div>
             </div>
 
             <p className="cs-shipping-note">
-              {shippingCost === 0 ? '✓ Free shipping applied' : `Add ${formatPrice(DATA.freeShippingThreshold - subtotal)} more for free shipping`}
+              ✓ Shipping charges added to final bill via WhatsApp
             </p>
 
             <div className="cs-security-note">
