@@ -7,7 +7,7 @@ export default function Cart() {
   const [items, setItems] = useState([]);
   const [couponCode, setCouponCode] = useState('');
   const [discountAmount, setDiscountAmount] = useState(0);
-  const [shippingCost, setShippingCost] = useState(DATA.shippingCost);
+  const [shippingCost, setShippingCost] = useState(0); 
 
   useEffect(() => {
     // Load from legacy sessionStorage or default
@@ -44,9 +44,7 @@ export default function Cart() {
 
   const subtotal = items.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
 
-  useEffect(() => {
-    setShippingCost(subtotal >= DATA.freeShippingThreshold ? 0 : DATA.shippingCost);
-  }, [subtotal]);
+  // Shipping is always handled via WhatsApp manually now
 
   const applyCoupon = () => {
     const code = couponCode.toUpperCase();
@@ -118,7 +116,7 @@ export default function Cart() {
         <aside className="order-summary" aria-label="Order summary">
           <h2 className="os-title">Order Summary</h2>
           <div className="os-row"><span>Subtotal</span><span>{formatPrice(subtotal)}</span></div>
-          <div className="os-row"><span>Shipping</span><span>{shippingCost === 0 ? 'Free 🎉' : formatPrice(shippingCost)}</span></div>
+          <div className="os-row"><span>Shipping</span><span>Calculated via WA</span></div>
           <div className="os-row" style={{ color: discountAmount > 0 ? 'var(--sage)' : '' }}>
             <span>Discount</span><span>{discountAmount > 0 ? `−${formatPrice(discountAmount)}` : '₹0'}</span>
           </div>
@@ -148,13 +146,13 @@ export default function Cart() {
           <button className="checkout-cta-btn" onClick={() => navigate('/checkout')} disabled={items.length === 0}>Proceed to Checkout →</button>
           <button className="continue-btn" onClick={() => navigate('/products')}>← Continue Shopping</button>
           
-          <p id="os-shipping-note" style={{ fontSize: '11px', textAlign: 'center', marginTop: '14px', color: shippingCost === 0 ? 'var(--sage)' : 'var(--warm-gray)' }}>
-            {shippingCost === 0 ? '✓ Free shipping applied' : `Add ${formatPrice(DATA.freeShippingThreshold - subtotal)} more for free shipping`}
+          <p id="os-shipping-note" style={{ fontSize: '11px', textAlign: 'center', marginTop: '14px', color: 'var(--warm-gray)' }}>
+            Shipping charges will be provided via WhatsApp
           </p>
           
           <div className="os-trust">
             <span>🔒 Secure &amp; encrypted checkout</span>
-            <span>📦 Free shipping on orders ≥ ₹999</span>
+            <span>📦 Shipping based on location/weight</span>
             <span>↩ Easy 7-day returns</span>
           </div>
         </aside>

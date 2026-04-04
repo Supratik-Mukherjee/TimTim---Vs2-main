@@ -86,7 +86,7 @@ export default function Checkout() {
 
     msg += `━━━━━━━━━━━━━━━━━━━━\n`;
     msg += `Subtotal: ₹${Math.round(subtotal)}\n`;
-    msg += `Shipping: ${shippingCost === 0 ? 'FREE 🎉' : `₹${shippingCost}`}\n`;
+    msg += `Shipping: Calculated via WA\n`;
     if (discountAmount > 0) {
       msg += `Discount (${couponCode} ${discountPct}%): -₹${Math.round(discountAmount)}\n`;
     }
