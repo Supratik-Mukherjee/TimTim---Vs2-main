@@ -2,6 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { doc, getDoc, collection, query, where, limit, getDocs } from 'firebase/firestore';
+import useStorageUrl from '../hooks/useStorageUrl';
+
+// ── SUB-COMPONENTS ──────────────────────────────────────────────
+
+function RelatedCard({ rp }) {
+  const resolvedUrl = useStorageUrl(rp.imageUrl);
+  return (
+    <Link to={`/product/${rp.id}`} className="prod-card">
+      <div className="prod-img-wrap">
+        <div 
+          className={`prod-img ${resolvedUrl || rp.imageUrl ? '' : (rp.bg || 'c-wax')}`} 
+          style={resolvedUrl ? { backgroundImage: `url('${resolvedUrl}')` } : {}}
+        >
+          {!resolvedUrl && !rp.imageUrl && (rp.emoji || '📦')}
+        </div>
+      </div>
+      <div className="prod-body">
+        <p className="prod-cat">{rp.cat}</p>
+        <h3 className="prod-name">{rp.shortName || rp.name}</h3>
+        <div className="prod-prices">
+          <span className="prod-price">₹{rp.price}</span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+// ── MAIN COMPONENT ─────────────────────────────────────────────
 
 export default function Product() {
   const { id } = useParams();
@@ -12,6 +40,9 @@ export default function Product() {
   const [qty, setQty] = useState(1);
   const [selectedWeight, setSelectedWeight] = useState(null);
   const [toast, setToast] = useState({ show: false, text: '', type: 'success' });
+
+  // Use storage hook for main image
+  const mainImageUrl = useStorageUrl(product?.imageUrl);
 
   const showToast = (text, type = 'success') => {
     setToast({ show: true, text, type });
@@ -121,11 +152,11 @@ export default function Product() {
         <div className="product-main">
           <div className="product-gallery">
             <div className="main-img-wrap">
-               {product.imageUrl ? (
-                 <img src={product.imageUrl} alt={product.name} className="product-featured-img" />
+               {mainImageUrl ? (
+                 <img src={mainImageUrl} alt={product.name} className="product-featured-img" loading="lazy" />
                ) : (
                  <div className={`product-placeholder ${product.bg || 'c-wax'}`}>
-                   {product.emoji || '📦'}
+                   {product.imageUrl ? '...' : (product.emoji || '📦')}
                  </div>
                )}
             </div>
@@ -209,20 +240,7 @@ export default function Product() {
             </div>
             <div className="prod-grid">
               {related.map(rp => (
-                <Link to={`/product/${rp.id}`} key={rp.id} className="prod-card">
-                  <div className="prod-img-wrap">
-                    <div className={`prod-img ${rp.imageUrl ? '' : (rp.bg || 'c-wax')}`} style={rp.imageUrl ? { backgroundImage: `url('${rp.imageUrl}')` } : {}}>
-                      {!rp.imageUrl && (rp.emoji || '📦')}
-                    </div>
-                  </div>
-                  <div className="prod-body">
-                    <p className="prod-cat">{rp.cat}</p>
-                    <h3 className="prod-name">{rp.shortName || rp.name}</h3>
-                    <div className="prod-prices">
-                      <span className="prod-price">₹{rp.price}</span>
-                    </div>
-                  </div>
-                </Link>
+                <RelatedCard key={rp.id} rp={rp} />
               ))}
             </div>
           </section>

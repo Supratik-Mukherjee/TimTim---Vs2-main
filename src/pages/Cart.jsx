@@ -1,6 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DATA } from '../data';
+import useStorageUrl from '../hooks/useStorageUrl';
+
+// ── SUB-COMPONENTS ──────────────────────────────────────────────
+
+function CartItemRow({ item, onQtyChange, onRemove, onNavigate, formatPrice }) {
+  const resolvedUrl = useStorageUrl(item.imageUrl);
+  
+  return (
+    <div className="cart-item-row" role="listitem">
+      {resolvedUrl ? (
+        <div className="cart-item-img" style={{ overflow: 'hidden' }}>
+          <img 
+            src={resolvedUrl} 
+            alt={item.name} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} 
+            loading="lazy" 
+          />
+        </div>
+      ) : (
+        <div className={`cart-item-img ${item.bg || 'c-wax'}`} aria-hidden="true">
+          {item.imageUrl ? '...' : (item.emoji || '📦')}
+        </div>
+      )}
+      <div>
+        <p 
+          className="ci-name" 
+          onClick={() => onNavigate(`/product/${item.id}`)} 
+          title="View product" 
+          style={{ cursor: 'pointer' }}
+        >
+          {item.name}
+        </p>
+        {item.selectedWeight && (
+          <p style={{ fontSize: '11px', color: 'var(--amber-dark)', fontWeight: 500, marginBottom: '4px' }}>
+            ⚖️ {item.selectedWeight}
+          </p>
+        )}
+        <p className="ci-unit-price">{formatPrice(item.price)} each</p>
+        <div className="ci-qty-ctrl" role="group" aria-label={`Quantity for ${item.name}`}>
+          <button className="ci-qty-btn" onClick={() => onQtyChange(-1)} aria-label="Decrease quantity">−</button>
+          <span className="ci-qty-val" aria-live="polite">{item.qty || 1}</span>
+          <button className="ci-qty-btn" onClick={() => onQtyChange(1)} aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <div className="ci-price-col">
+        <span className="ci-price">{formatPrice(item.price * (item.qty || 1))}</span>
+        <button className="ci-remove" onClick={onRemove} aria-label={`Remove ${item.name}`}>Remove</button>
+      </div>
+    </div>
+  );
+}
+
+// ── MAIN COMPONENT ─────────────────────────────────────────────
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -81,33 +134,14 @@ export default function Cart() {
           ) : (
             <div className="cart-items-list" role="list">
               {items.map(item => (
-                <div className="cart-item-row" role="listitem" key={item.cartKey || item.id}>
-                  {item.imageUrl ? (
-                    <div className="cart-item-img" style={{ overflow: 'hidden' }}>
-                      <img src={item.imageUrl} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
-                    </div>
-                  ) : (
-                    <div className={`cart-item-img ${item.bg}`} aria-hidden="true">{item.emoji || '📦'}</div>
-                  )}
-                  <div>
-                    <p className="ci-name" onClick={() => navigate(`/product/${item.id}`)} title="View product" style={{ cursor: 'pointer' }}>
-                      {item.name}
-                    </p>
-                    {item.selectedWeight && (
-                      <p style={{ fontSize: '11px', color: 'var(--amber-dark)', fontWeight: 500, marginBottom: '4px' }}>⚖️ {item.selectedWeight}</p>
-                    )}
-                    <p className="ci-unit-price">{formatPrice(item.price)} each</p>
-                    <div className="ci-qty-ctrl" role="group" aria-label={`Quantity for ${item.name}`}>
-                      <button className="ci-qty-btn" onClick={() => changeQty(item.cartKey || item.id, -1)} aria-label="Decrease quantity">−</button>
-                      <span className="ci-qty-val" aria-live="polite">{item.qty || 1}</span>
-                      <button className="ci-qty-btn" onClick={() => changeQty(item.cartKey || item.id, 1)} aria-label="Increase quantity">+</button>
-                    </div>
-                  </div>
-                  <div className="ci-price-col">
-                    <span className="ci-price">{formatPrice(item.price * (item.qty || 1))}</span>
-                    <button className="ci-remove" onClick={() => removeItem(item.cartKey || item.id)} aria-label={`Remove ${item.name}`}>Remove</button>
-                  </div>
-                </div>
+                <CartItemRow 
+                  key={item.cartKey || item.id} 
+                  item={item} 
+                  onQtyChange={(delta) => changeQty(item.cartKey || item.id, delta)} 
+                  onRemove={() => removeItem(item.cartKey || item.id)} 
+                  onNavigate={navigate} 
+                  formatPrice={formatPrice} 
+                />
               ))}
             </div>
           )}

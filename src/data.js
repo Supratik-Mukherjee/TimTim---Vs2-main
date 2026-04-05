@@ -18,6 +18,7 @@ export const DATA = {
       bg: 'linear-gradient(135deg,#e8d8c0,#c8a870)',
       large: true,
       scrollTo: 'raw-material',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Candel_Wax.jpeg',
     },
     {
       label: 'Silicon Moulds',
@@ -25,6 +26,7 @@ export const DATA = {
       emoji: '🫙',
       bg: 'linear-gradient(135deg,#d8e8d8,#a8c8a8)',
       scrollTo: 'moulds',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Moulds.jpeg',
     },
     {
       label: 'Fragrance Oils',
@@ -32,6 +34,7 @@ export const DATA = {
       emoji: '🌸',
       bg: 'linear-gradient(135deg,#e8d8d8,#c8a8a8)',
       scrollTo: 'fragrances',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Fragrances.jpeg',
     },
     {
       label: 'Essential Tools',
@@ -39,6 +42,7 @@ export const DATA = {
       emoji: '🧰',
       bg: 'linear-gradient(135deg,#d8d8e8,#a8a8c8)',
       scrollTo: 'raw-material',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Essential-Tools.jpeg',
     },
     {
       label: 'Containers',
@@ -46,6 +50,7 @@ export const DATA = {
       emoji: '🫧',
       bg: 'linear-gradient(135deg,#e8e0d0,#c8b890)',
       scrollTo: 'raw-material',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Containers.jpeg',
     },
     {
       label: 'Beginner Kits',
@@ -53,6 +58,21 @@ export const DATA = {
       emoji: '🎁',
       bg: 'linear-gradient(135deg,#d8e8e0,#a8c8b8)',
       scrollTo: 'kits',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Beginner-kit.png',
+    },
+    {
+      label: 'Color',
+      sub: 'Liquid · Pigment · Neon',
+      emoji: '🎨',
+      bg: 'linear-gradient(135deg,#f0e0d0,#d0b8a8)',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Colors.jpeg',
+    },
+    {
+      label: 'Concrete Items',
+      sub: 'Trays · Jars · Decor',
+      emoji: '🏺',
+      bg: 'linear-gradient(135deg,#e0e0e0,#b0b0b0)',
+      imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/concrete.png',
     },
   ],
 

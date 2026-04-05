@@ -3,10 +3,66 @@ import { useNavigate } from 'react-router-dom';
 import { DATA } from '../data';
 import { db } from '../firebase';
 import { collection, onSnapshot } from 'firebase/firestore';
+import useStorageUrl from '../hooks/useStorageUrl';
+import ProductCard from '../components/ProductCard';
+
+// ── SUB-COMPONENTS ──────────────────────────────────────────────
+
+function HeroTile({ label, cat, url, className, onClick }) {
+  const resolvedUrl = useStorageUrl(url);
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+      style={{
+        cursor: 'pointer',
+        backgroundImage: resolvedUrl ? `url('${resolvedUrl}')` : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: 'var(--cream)'
+      }}
+    >
+      <div className="hero-tag">{label}</div>
+    </div>
+  );
+}
+
+function CategoryCard({ cat, onClick }) {
+  const resolvedUrl = useStorageUrl(cat.imageUrl);
+  return (
+    <div
+      className={`cat-card reveal in ${cat.large ? 'cat-large' : ''}`}
+      style={{ background: cat.bg }}
+      onClick={onClick}
+      role="button"
+      tabIndex="0"
+      aria-label={`Browse ${cat.label}`}
+      onKeyDown={(e) => { if (e.key === 'Enter') onClick(); }}
+    >
+      <div
+        className="cat-inner"
+        style={resolvedUrl ? {
+          backgroundImage: `url('${resolvedUrl}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 1
+        } : {}}
+      >
+        {!resolvedUrl && !cat.imageUrl && cat.emoji}
+      </div>
+      <div className="cat-overlay">
+        <h3>{cat.label}</h3>
+        <span>{cat.sub}</span>
+      </div>
+    </div>
+  );
+}
+
+// ── MAIN COMPONENT ─────────────────────────────────────────────
 
 export default function Home() {
   const navigate = useNavigate();
-  const [cloudProducts, setCloudProducts] = useState(DATA.legacyProducts); // Fallback to local
+  const [cloudProducts, setCloudProducts] = useState(DATA.legacyProducts);
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, 'products'), (snap) => {
@@ -17,23 +73,9 @@ export default function Home() {
     return () => unsub();
   }, []);
 
-  useEffect(() => {
-    // Reveal all items once cloudProducts is loaded
-    if (cloudProducts.length > 0) {
-      setTimeout(() => {
-        const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach(r => r.classList.add('in'));
-      }, 100);
-    }
-  }, [cloudProducts]);
-
   const featured = cloudProducts.slice(0, 8);
-
   const formatPrice = (p) => `₹${p}`;
-
-  const handleProductClick = (id) => {
-    navigate(`/product/${id}`);
-  };
+  const handleProductClick = (id) => navigate(`/product/${id}`);
 
   return (
     <div id="page-home" className="page" aria-label="Home page">
@@ -48,9 +90,24 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-visual">
-          <div className="hero-tile tall c-amber" onClick={() => navigate('/products?cat=Candle+Waxes')} style={{ cursor: 'pointer' }}><span>🕯️</span><div className="hero-tag">Soy Wax Collection</div></div>
-          <div className="hero-tile c-rose" onClick={() => navigate('/products?cat=Silicon+Moulds')} style={{ cursor: 'pointer' }}><span>🌹</span><div className="hero-tag">Floral Moulds</div></div>
-          <div className="hero-tile c-fragrance" onClick={() => navigate('/products?cat=Fragrance+Oils')} style={{ cursor: 'pointer' }}><span>🌿</span><div className="hero-tag">Fragrance Oils</div></div>
+          <HeroTile 
+            label="Soy Wax Collection"
+            url="gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Candel_Wax.jpeg"
+            className="hero-tile tall c-amber"
+            onClick={() => navigate('/products?cat=Candle+Waxes')}
+          />
+          <HeroTile 
+            label="Floral Moulds"
+            url="gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Moulds.jpeg"
+            className="hero-tile c-rose"
+            onClick={() => navigate('/products?cat=Silicon+Moulds')}
+          />
+          <HeroTile 
+            label="Fragrance Oils"
+            url="gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Fragrances.jpeg"
+            className="hero-tile c-fragrance"
+            onClick={() => navigate('/products?cat=Fragrance+Oils')}
+          />
         </div>
       </section>
 
@@ -73,22 +130,11 @@ export default function Home() {
         </div>
         <div className="cat-grid" id="cat-grid">
           {DATA.categories.map((cat, i) => (
-            <div
-              key={i}
-              className={`cat-card reveal in ${cat.large ? 'cat-large' : ''}`}
-              style={{ background: cat.bg }}
-              onClick={() => navigate(`/products?cat=${encodeURIComponent(cat.label)}`)}
-              role="button"
-              tabIndex="0"
-              aria-label={`Browse ${cat.label}`}
-              onKeyDown={(e) => { if (e.key === 'Enter') navigate(`/products?cat=${encodeURIComponent(cat.label)}`); }}
-            >
-              <div className="cat-inner">{cat.emoji}</div>
-              <div className="cat-overlay">
-                <h3>{cat.label}</h3>
-                <span>{cat.sub}</span>
-              </div>
-            </div>
+            <CategoryCard 
+              key={i} 
+              cat={cat} 
+              onClick={() => navigate(`/products?cat=${encodeURIComponent(cat.label)}`)} 
+            />
           ))}
         </div>
       </section>
@@ -103,28 +149,13 @@ export default function Home() {
             <p style={{ gridColumn: '1/-1', textAlign: 'center', color: 'var(--warm-gray)', padding: '40px 0' }}>Loading products...</p>
           ) : (
             featured.map(p => (
-              <div className="prod-card reveal" key={p.id} onClick={() => handleProductClick(p.id)}>
-                <div className="prod-thumb">
-                  {p.badges && p.badges.map(b => (
-                    <span className={`prod-badge ${b}`} key={b}>{b === 'sale' ? 'Sale' : b === 'new' ? 'New' : 'Popular'}</span>
-                  ))}
-                  <div 
-                    className={`prod-thumb-inner ${p.imageUrl ? '' : (p.bg || 'c-wax')}`} 
-                    style={p.imageUrl ? { backgroundImage: `url('${p.imageUrl}')`, backgroundSize: 'cover' } : {}}
-                  >
-                    {!p.imageUrl && (p.emoji || '📦')}
-                  </div>
-                  <button className="quick-add" aria-label="Add to cart" onClick={(e) => { e.stopPropagation(); navigate(`/product/${p.id}`); }}>+</button>
-                </div>
-                <div className="prod-body">
-                  <p className="prod-cat">{p.cat}</p>
-                  <h3 className="prod-name">{p.shortName || p.name}</h3>
-                  <div className="prod-prices">
-                    <span className="prod-price">{p.weightTiers && p.weightTiers.length > 0 ? `from ${formatPrice(p.price)}` : formatPrice(p.price)}</span>
-                    {p.originalPrice && <span className="prod-orig">{formatPrice(p.originalPrice)}</span>}
-                  </div>
-                </div>
-              </div>
+              <ProductCard 
+                key={p.id} 
+                p={p} 
+                onClick={() => handleProductClick(p.id)}
+                formatPrice={formatPrice}
+                onQuickAdd={(e) => { e.stopPropagation(); navigate(`/product/${p.id}`); }}
+              />
             ))
           )}
         </div>

@@ -9,7 +9,7 @@ export default function About() {
         background: 'var(--cream)',
         borderBottom: '1px solid var(--border)'
       }}>
-        <img src="/logo.png" alt="Timtim by Aritri" style={{ height: '80px', marginBottom: '24px' }} />
+        <img src="/logo.png" alt="Timtim by Aritri" style={{ height: '80px', marginBottom: '24px' }} loading="lazy" />
         <p className="hero-eyebrow" style={{ letterSpacing: '0.2em', color: 'var(--amber)', textTransform: 'uppercase', fontSize: '12px', fontWeight: 600, marginBottom: '16px' }}>Our Story</p>
         <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 400, color: 'var(--amber-dark)' }}>Timtim <em>by Aritri</em></h1>
         <p style={{ maxWidth: '700px', margin: '24px auto 0', color: 'var(--warm-gray)', lineHeight: 1.6, fontSize: '1.1rem' }}>
@@ -52,7 +52,7 @@ export default function About() {
                justifyContent: 'center',
                overflow: 'hidden'
              }}>
-               <img src="/logo.png" alt="Timtim" style={{ width: '65%', objectFit: 'contain', opacity: 0.9 }} />
+               <img src="/logo.png" alt="Timtim" style={{ width: '65%', objectFit: 'contain', opacity: 0.9 }} loading="lazy" />
              </div>
           </div>
         </div>

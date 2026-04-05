@@ -199,7 +199,7 @@ button { cursor: pointer; }
 .prod-card:hover .prod-thumb-inner { transform: scale(1.06); }
 
 .prod-actions {
-  position: absolute; inset-x: 0; bottom: 0;
+  position: absolute; left: 0; right: 0; bottom: 0;
   padding: 14px; display: flex; gap: 8px;
   transform: translateY(100%);
   transition: transform .3s ease;
@@ -341,7 +341,7 @@ button { cursor: pointer; }
   .sec-head  { flex-direction: column; align-items: flex-start; gap: 14px; }
 }
 @media (max-width: 480px) {
-  .prod-grid { grid-template-columns: 1fr; }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

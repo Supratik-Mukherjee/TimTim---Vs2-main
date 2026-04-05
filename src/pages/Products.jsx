@@ -3,6 +3,43 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { DATA } from '../data';
 import { db } from '../firebase';
 import { collection, onSnapshot } from 'firebase/firestore';
+import useStorageUrl from '../hooks/useStorageUrl';
+
+// ── SUB-COMPONENTS ──────────────────────────────────────────────
+
+function ShopTile({ p, onClick, formatPrice }) {
+  const resolvedUrl = useStorageUrl(p.imageUrl);
+  
+  return (
+    <div className="shop-tile" onClick={onClick}>
+      {p.badges && p.badges.map(b => (
+        <span className={`prod-badge ${b}`} key={b}>
+          {b === 'sale' ? 'Sale' : b === 'new' ? 'New' : 'Popular'}
+        </span>
+      ))}
+      
+      {resolvedUrl ? (
+        <img src={resolvedUrl} alt={p.name} className="shop-tile-img" loading="lazy" />
+      ) : (
+        <div className={`shop-tile-placeholder ${p.bg || 'c-wax'}`}>
+          {!resolvedUrl && !p.imageUrl && (p.emoji || '📦')}
+          {(resolvedUrl === null && p.imageUrl) && '...'}
+        </div>
+      )}
+      
+      <div className="shop-tile-overlay">
+        <h3 className="shop-tile-name">{p.shortName || p.name}</h3>
+        <span className="shop-tile-price">
+          {p.weightTiers && p.weightTiers.length > 0 
+            ? `from ${formatPrice(p.price)}` 
+            : formatPrice(p.price)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+// ── MAIN COMPONENT ─────────────────────────────────────────────
 
 export default function Products() {
   const navigate = useNavigate();
@@ -74,24 +111,12 @@ export default function Products() {
           <p style={{ textAlign: 'center', width: '100%', gridColumn: '1/-1' }}>No products found in this category.</p>
         ) : (
           productsToDisplay.map(p => (
-            <div className="shop-tile" key={p.id} onClick={() => handleProductClick(p.id)}>
-              {p.badges && p.badges.map(b => (
-                <span className={`prod-badge ${b}`} key={b}>{b === 'sale' ? 'Sale' : b === 'new' ? 'New' : 'Popular'}</span>
-              ))}
-              {p.imageUrl ? (
-                <img src={p.imageUrl} alt={p.name} className="shop-tile-img" />
-              ) : (
-                <div className={`shop-tile-placeholder ${p.bg || 'c-wax'}`}>
-                  {p.emoji || '📦'}
-                </div>
-              )}
-              <div className="shop-tile-overlay">
-                <h3 className="shop-tile-name">{p.shortName || p.name}</h3>
-                <span className="shop-tile-price">
-                  {p.weightTiers && p.weightTiers.length > 0 ? `from ${formatPrice(p.price)}` : formatPrice(p.price)}
-                </span>
-              </div>
-            </div>
+            <ShopTile 
+              key={p.id} 
+              p={p} 
+              onClick={() => handleProductClick(p.id)} 
+              formatPrice={formatPrice} 
+            />
           ))
         )}
       </div>

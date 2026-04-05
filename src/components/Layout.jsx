@@ -40,7 +40,7 @@ export default function Layout() {
       <nav className="site-nav" role="navigation" aria-label="Main navigation">
         <div className="nav-inner">
           <Link className="nav-logo" to="/" aria-label="Timtim by Aritri — Go to homepage">
-            <img src="/logo.png" alt="Timtim" style={{ height: '34px', borderRadius: '50%' }} />
+            <img src="/logo.png" alt="Timtim" style={{ height: '34px', borderRadius: '50%' }} loading="lazy" />
             Timtim <span>by</span> Aritri
           </Link>
           <ul className="nav-links" aria-label="Site sections">
@@ -92,7 +92,7 @@ export default function Layout() {
       <footer className="site-footer" role="contentinfo">
         <div className="foot-grid">
           <div className="foot-brand">
-            <img src="/logo.png" alt="Timtim by Aritri" style={{ height: '50px', borderRadius: '50%', marginBottom: '12px', display: 'block' }} />
+            <img src="/logo.png" alt="Timtim by Aritri" style={{ height: '50px', borderRadius: '50%', marginBottom: '12px', display: 'block' }} loading="lazy" />
             <Link className="foot-logo" to="/" aria-label="Home">Timtim <span>by</span> Aritri</Link>
             <p>India's trusted source for premium candle-making raw materials — soy wax, fragrance oils, silicon moulds, containers &amp; beginner kits. Dispatch within 24 hours. Pan India delivery.</p>
             <div className="socials">
