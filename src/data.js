@@ -86,10 +86,10 @@ export const DATA = {
 
   /* ── PROMO CODES ──────────────────────────── */
   promoCodes: {
-    TIMTIM10: 10,
-    ARITRI10: 10,
-    CANDLE10: 10,
-    FIRST15: 15,
+    // TIMTIM10: 10,
+    // ARITRI10: 10,
+    // CANDLE10: 10,
+    // FIRST15: 15,
   },
 
   /* ── SHIPPING (Self-calculated via WhatsApp) ── */
