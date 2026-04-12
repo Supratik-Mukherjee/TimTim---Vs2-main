@@ -201,6 +201,8 @@ export default function Admin() {
                 <option value="Essential Tools">Essential Tools</option>
                 <option value="Containers">Containers</option>
                 <option value="Beginner Kits">Beginner Kits</option>
+                <option value="Colors">Colors</option>
+                <option value="Concrete Items">Concrete Items</option>
               </select>
             </div>
 

@@ -107,6 +107,8 @@ export default function Layout() {
               <li><Link to="/products?cat=Silicon Moulds">Silicon Moulds</Link></li>
               <li><Link to="/products?cat=Fragrance Oils">Fragrances</Link></li>
               <li><Link to="/products?cat=Beginner Kits">Beginner Kits</Link></li>
+              <li><Link to="/products?cat=Colors">Colors</Link></li>
+              <li><Link to="/products?cat=Concrete Items">Concrete Items</Link></li>
             </ul>
           </div>
           <div className="foot-col">

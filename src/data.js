@@ -61,7 +61,7 @@ export const DATA = {
       imageUrl: 'gs://timtim-vs2-main-10726303-20a19.firebasestorage.app/Cover/Beginner-kit.png',
     },
     {
-      label: 'Color',
+      label: 'Colors',
       sub: 'Liquid · Pigment · Neon',
       emoji: '🎨',
       bg: 'linear-gradient(135deg,#f0e0d0,#d0b8a8)',
